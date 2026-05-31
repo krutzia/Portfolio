@@ -313,8 +313,34 @@ function CanvasField() {
   );
 }
 
-// Convert "var(--cosmos-violet)" → "oklch(... / a)" by emitting color-mix
+// Canvas can't parse var() or color-mix(). Resolve CSS variables to their
+// computed value (an oklch(...) string) and splice in an alpha channel.
+const _resolvedCache = new Map<string, string>();
+function resolveVar(input: string): string {
+  if (typeof window === "undefined") return "#ffffff";
+  const m = input.match(/var\((--[^)]+)\)/);
+  if (!m) return input;
+  const name = m[1];
+  const cached = _resolvedCache.get(name);
+  if (cached) return cached;
+  const v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  const out = v || "#ffffff";
+  _resolvedCache.set(name, out);
+  return out;
+}
 function withAlpha(colorVar: string, a: number) {
-  if (colorVar === "white") return `oklch(1 0 0 / ${a})`;
-  return `color-mix(in oklch, ${colorVar} ${Math.round(a * 100)}%, transparent)`;
+  if (colorVar === "white") return `rgba(255,255,255,${a})`;
+  const resolved = resolveVar(colorVar);
+  // oklch(L C H) → oklch(L C H / a)
+  const ok = resolved.match(/^oklch\(([^)]+)\)$/i);
+  if (ok) {
+    const parts = ok[1].split("/")[0].trim();
+    return `oklch(${parts} / ${a})`;
+  }
+  // hsl(...) or rgb(...) — wrap with alpha via color-mix? Canvas can't. Fallback:
+  const hsl = resolved.match(/^hsl\(([^)]+)\)$/i);
+  if (hsl) return `hsla(${hsl[1]}, ${a})`;
+  const rgb = resolved.match(/^rgb\(([^)]+)\)$/i);
+  if (rgb) return `rgba(${rgb[1]}, ${a})`;
+  return resolved;
 }
