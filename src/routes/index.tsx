@@ -2,8 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { AnimationModeProvider } from "@/context/AnimationModeContext";
 import { Navbar } from "@/components/layout/Navbar";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
-import { CustomCursor } from "@/components/layout/CustomCursor";
-import { ParticleField } from "@/components/fx/ParticleField";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { SkillConstellation } from "@/components/sections/SkillConstellation";
@@ -15,17 +13,17 @@ import { Contact } from "@/components/sections/Contact";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Kashish — Full Stack Developer & Software Engineer" },
+      { title: "Kashish — Full Stack Developer" },
       {
         name: "description",
         content:
-          "Final-year CSE student at JSS Academy of Technical Education. Full Stack Developer building AI-powered, production-grade web products.",
+          "Final-year CSE student at JSS Academy of Technical Education. Full Stack Developer building production web products with React, Node, and TypeScript.",
       },
       { property: "og:title", content: "Kashish — Full Stack Developer" },
       {
         property: "og:description",
         content:
-          "Portfolio of Kashish — React, Node, and AI-powered web products. ResuMatch, FitTrack, Silo Study AI.",
+          "Portfolio of Kashish — React, Node, and TypeScript across the stack. ResuMatch, FitTrack, Silo Study AI.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -39,8 +37,6 @@ function Home() {
     <AnimationModeProvider>
       <div className="relative min-h-screen bg-background text-foreground">
         <ScrollProgress />
-        <CustomCursor />
-        <ParticleField />
         <Navbar />
         <main>
           <Hero />

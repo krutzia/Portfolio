@@ -23,19 +23,19 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="relative px-4 pb-24 pt-32">
+    <section id="contact" className="relative border-t border-border px-6 pb-16 pt-24">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionLabel>Get In Touch</SectionLabel>
-          <h2 className="mt-3 max-w-3xl text-4xl font-bold leading-tight sm:text-5xl">
-            Let's build something <span className="gradient-text">remarkable</span>.
+          <h2 className="mt-4 max-w-2xl text-3xl font-semibold leading-tight sm:text-4xl">
+            Let's build something together.
           </h2>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-[1fr_1.2fr]">
+        <div className="mt-12 grid gap-4 lg:grid-cols-[1fr_1.2fr]">
           <Reveal>
-            <div className="flex h-full flex-col justify-between rounded-3xl glass p-7">
-              <div className="space-y-5">
+            <div className="panel flex h-full flex-col justify-between rounded-lg p-6">
+              <div className="space-y-2">
                 <InfoRow Icon={Mail} label="Email" value={profile.email} href={socials.email} />
                 <InfoRow
                   Icon={Github}
@@ -51,41 +51,32 @@ export function Contact() {
                 />
                 <InfoRow Icon={MapPin} label="Location" value={profile.location} />
               </div>
-              <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.02] p-4 text-xs text-muted-foreground">
+              <div className="mt-8 rounded-md border border-border bg-background/40 p-4 text-xs leading-relaxed text-muted-foreground">
                 Currently open to internships, full-time roles, and interesting collaborations.
-                Typical response time: under 24 hours.
+                Typical response under 24 hours.
               </div>
             </div>
           </Reveal>
 
-          <Reveal delay={0.1}>
-            <form
-              onSubmit={handleSubmit}
-              className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-white/[0.01] p-7"
-            >
-              <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[var(--cosmos-violet)] opacity-20 blur-3xl" />
-              <div className="grid gap-5">
+          <Reveal delay={0.08}>
+            <form onSubmit={handleSubmit} className="panel rounded-lg p-6">
+              <div className="grid gap-4">
                 <Field name="name" label="Your name" placeholder="Jane Recruiter" />
-                <Field
-                  name="email"
-                  type="email"
-                  label="Email"
-                  placeholder="jane@company.com"
-                />
+                <Field name="email" type="email" label="Email" placeholder="jane@company.com" />
                 <Field
                   name="message"
                   label="Message"
-                  placeholder="Tell me about the role or project..."
+                  placeholder="Tell me about the role or project…"
                   textarea
                 />
                 <motion.button
                   type="submit"
-                  whileTap={{ scale: 0.97 }}
-                  className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-[var(--cosmos-violet)] via-primary to-[var(--cosmos-cyan)] px-6 py-3.5 text-sm font-medium text-background shadow-[0_10px_40px_-10px_oklch(0.72_0.2_295/0.6)] transition-transform hover:scale-[1.02]"
+                  whileTap={{ scale: 0.98 }}
+                  className="inline-flex items-center justify-center gap-2 rounded-md bg-foreground px-4 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-90"
                 >
                   {sent ? (
                     <>
-                      <Check className="h-4 w-4" /> Opening your mail app…
+                      <Check className="h-4 w-4" /> Opening mail app…
                     </>
                   ) : (
                     <>
@@ -98,9 +89,9 @@ export function Contact() {
           </Reveal>
         </div>
 
-        <div className="mt-20 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-muted-foreground sm:flex-row">
-          <p>© {new Date().getFullYear()} Kashish. Crafted with care.</p>
-          <p>Designed and built in React, TypeScript & Framer Motion.</p>
+        <div className="mt-16 flex flex-col items-center justify-between gap-3 border-t border-border pt-8 text-xs text-muted-foreground sm:flex-row">
+          <p>© {new Date().getFullYear()} Kashish.</p>
+          <p>Built with React, TypeScript & Framer Motion.</p>
         </div>
       </div>
     </section>
@@ -119,9 +110,9 @@ function InfoRow({
   href?: string;
 }) {
   const inner = (
-    <div className="group flex items-center gap-4 rounded-xl p-2 transition-colors hover:bg-white/5">
-      <div className="grid h-10 w-10 flex-shrink-0 place-items-center rounded-lg border border-white/10 bg-white/5">
-        <Icon className="h-4 w-4" />
+    <div className="group flex items-center gap-4 rounded-md p-2 transition-colors hover:bg-secondary/60">
+      <div className="grid h-9 w-9 flex-shrink-0 place-items-center rounded-md border border-border bg-secondary">
+        <Icon className="h-4 w-4 text-muted-foreground" />
       </div>
       <div className="min-w-0">
         <div className="text-[10px] uppercase tracking-wider text-muted-foreground">{label}</div>
@@ -152,12 +143,10 @@ function Field({
   textarea?: boolean;
 }) {
   const base =
-    "peer w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none transition-all focus:border-[var(--cosmos-violet)] focus:bg-white/[0.06] focus:ring-2 focus:ring-[var(--cosmos-violet)]/30";
+    "w-full rounded-md border border-border bg-background/60 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none transition-colors focus:border-[oklch(1_0_0_/_20%)] focus:bg-background";
   return (
     <label className="block">
-      <span className="mb-1.5 block text-xs uppercase tracking-wider text-muted-foreground">
-        {label}
-      </span>
+      <span className="mb-1.5 block text-xs text-muted-foreground">{label}</span>
       {textarea ? (
         <textarea name={name} required rows={5} placeholder={placeholder} className={base} />
       ) : (
