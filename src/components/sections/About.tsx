@@ -8,67 +8,48 @@ const cards = [
     title: "Final-year CSE",
     body: profile.education.school,
     sub: `${profile.education.period} · CGPA ${profile.education.cgpa}`,
-    accent: "var(--cosmos-violet)",
   },
   {
     Icon: Code2,
-    title: "Full Stack Builder",
-    body: "React, Node, and modern TypeScript across the stack — from idea to deployed product.",
+    title: "Full Stack",
+    body: "React, Node, and TypeScript across the stack — from idea to deployed product.",
     sub: "Frontend · Backend · Databases",
-    accent: "var(--cosmos-cyan)",
   },
   {
     Icon: Rocket,
-    title: "Ships Real Products",
+    title: "Ships Products",
     body: "Three live projects in production, focused on AI-augmented tooling and user value.",
     sub: "ResuMatch · FitTrack · Silo Study AI",
-    accent: "var(--cosmos-pink)",
   },
   {
     Icon: Brain,
-    title: "Problem-solving Mindset",
-    body: "450+ DSA problems on LeetCode — daily reps in algorithms, data structures, and system thinking.",
+    title: "Problem Solver",
+    body: "450+ DSA problems on LeetCode — daily reps in algorithms and data structures.",
     sub: "C++ · Java · Python",
-    accent: "var(--cosmos-emerald)",
   },
 ];
 
 export function About() {
   return (
-    <section id="about" className="relative px-4 py-32">
+    <section id="about" className="relative border-t border-border px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionLabel>About</SectionLabel>
-          <h2 className="mt-3 max-w-3xl text-4xl font-bold leading-tight sm:text-5xl">
-            A student engineer wired to{" "}
-            <span className="gradient-text">build, break, and ship</span>.
+          <h2 className="mt-4 max-w-2xl text-3xl font-semibold leading-tight sm:text-4xl">
+            A student engineer focused on building real, shipped software.
           </h2>
         </Reveal>
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2">
-          {cards.map(({ Icon, title, body, sub, accent }, i) => (
-            <Reveal key={title} delay={0.05 * i}>
-              <article
-                className="group relative h-full overflow-hidden rounded-2xl glass p-6 transition-transform duration-500 hover:-translate-y-1"
-                style={{
-                  boxShadow: `0 30px 60px -40px ${accent}`,
-                }}
-              >
-                <div
-                  className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full opacity-30 blur-3xl transition-opacity group-hover:opacity-60"
-                  style={{ background: accent }}
-                />
-                <div
-                  className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10"
-                  style={{ background: `${accent.replace(")", " / 0.15)")}` }}
-                >
-                  <Icon className="h-5 w-5" style={{ color: accent }} />
+        <div className="mt-12 grid gap-4 sm:grid-cols-2">
+          {cards.map(({ Icon, title, body, sub }, i) => (
+            <Reveal key={title} delay={0.04 * i}>
+              <article className="panel panel-hover h-full rounded-lg p-6">
+                <div className="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-secondary">
+                  <Icon className="h-4 w-4 text-muted-foreground" />
                 </div>
-                <h3 className="text-xl font-semibold">{title}</h3>
+                <h3 className="text-base font-semibold">{title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p>
-                <p className="mt-4 text-xs uppercase tracking-wider text-muted-foreground/70">
-                  {sub}
-                </p>
+                <p className="mt-4 text-xs text-muted-foreground/70">{sub}</p>
               </article>
             </Reveal>
           ))}
@@ -80,8 +61,8 @@ export function About() {
 
 export function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-muted-foreground">
-      <span className="h-px w-8 bg-gradient-to-r from-[var(--cosmos-violet)] to-transparent" />
+    <div className="flex items-center gap-3 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+      <span className="h-px w-6 bg-border" />
       {children}
     </div>
   );
