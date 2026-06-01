@@ -4,6 +4,7 @@ import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/fx/Reveal";
 import { SectionLabel } from "@/components/sections/About";
 import { projects } from "@/config/portfolio";
+import { useAnimationMode } from "@/context/AnimationModeContext";
 
 const FILTERS = ["All", "Full Stack", "Frontend", "AI"] as const;
 type Filter = (typeof FILTERS)[number];
@@ -17,9 +18,28 @@ function matches(filter: Filter, tech: string[]) {
   return true;
 }
 
+// Stable: preserve original config order with an index, then filter.
+const INDEXED = projects.map((p, i) => ({ p, i }));
+
 export function Projects() {
   const [filter, setFilter] = useState<Filter>("All");
-  const filtered = useMemo(() => projects.filter((p) => matches(filter, p.tech)), [filter]);
+  const { isMinimal, intensity } = useAnimationMode();
+
+  const filtered = useMemo(
+    () => INDEXED.filter(({ p }) => matches(filter, p.tech)).sort((a, b) => a.i - b.i),
+    [filter],
+  );
+
+  const counts = useMemo(() => {
+    const c: Record<Filter, number> = { All: 0, "Full Stack": 0, Frontend: 0, AI: 0 };
+    FILTERS.forEach((f) => {
+      c[f] = projects.filter((p) => matches(f, p.tech)).length;
+    });
+    return c;
+  }, []);
+
+  const ease = [0.22, 1, 0.36, 1] as const;
+  const baseDuration = isMinimal ? 0.2 : 0.35 + intensity * 0.2;
 
   return (
     <section id="projects" className="relative border-t border-border px-6 py-24">
@@ -38,16 +58,23 @@ export function Projects() {
         </Reveal>
 
         <Reveal delay={0.05}>
-          <LayoutGroup>
-            <div className="mt-10 flex flex-wrap items-center gap-1 rounded-full border border-border bg-card/60 p-1 w-fit">
+          <LayoutGroup id="project-filters">
+            <div
+              role="tablist"
+              aria-label="Project category filter"
+              className="mt-10 flex flex-wrap items-center gap-1 rounded-full border border-border bg-card/60 p-1 w-fit"
+            >
               {FILTERS.map((f) => {
                 const isActive = filter === f;
+                const count = counts[f];
                 return (
                   <button
                     key={f}
+                    role="tab"
+                    aria-selected={isActive}
                     onClick={() => setFilter(f)}
                     className={
-                      "relative rounded-full px-4 py-1.5 text-xs font-medium transition-colors " +
+                      "relative inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-medium transition-colors " +
                       (isActive ? "text-background" : "text-muted-foreground hover:text-foreground")
                     }
                   >
@@ -55,10 +82,24 @@ export function Projects() {
                       <motion.span
                         layoutId="project-filter-pill"
                         className="absolute inset-0 rounded-full bg-foreground"
-                        transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                        transition={
+                          isMinimal
+                            ? { duration: 0.15, ease }
+                            : { type: "spring", stiffness: 380, damping: 32 }
+                        }
                       />
                     )}
                     <span className="relative z-10">{f}</span>
+                    <span
+                      className={
+                        "relative z-10 rounded-full px-1.5 text-[10px] tabular-nums " +
+                        (isActive
+                          ? "bg-background/15 text-background/80"
+                          : "bg-secondary/60 text-muted-foreground")
+                      }
+                    >
+                      {count}
+                    </span>
                   </button>
                 );
               })}
@@ -66,36 +107,46 @@ export function Projects() {
           </LayoutGroup>
         </Reveal>
 
-        <div className="mt-8 grid gap-4">
-          <AnimatePresence mode="popLayout">
-            {filtered.map((p, i) => (
-              <motion.div
-                key={p.name}
-                layout
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.45, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <ProjectCard project={p} index={i} />
-              </motion.div>
-            ))}
-          </AnimatePresence>
-          {filtered.length === 0 && (
-            <p className="rounded-lg border border-border bg-card p-8 text-center text-sm text-muted-foreground">
-              No projects in this category yet.
-            </p>
-          )}
-        </div>
+        <LayoutGroup id="project-grid">
+          <motion.div layout className="mt-8 grid gap-4">
+            <AnimatePresence mode="popLayout" initial={false}>
+              {filtered.map(({ p, i }, displayIndex) => (
+                <motion.div
+                  key={p.name}
+                  layout={!isMinimal}
+                  initial={{ opacity: 0, y: isMinimal ? 0 : 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: isMinimal ? 0 : -6, scale: isMinimal ? 1 : 0.99 }}
+                  transition={{
+                    duration: baseDuration,
+                    delay: isMinimal ? 0 : displayIndex * 0.04,
+                    ease,
+                    layout: isMinimal
+                      ? { duration: 0.2, ease }
+                      : { type: "spring", stiffness: 260, damping: 28 },
+                  }}
+                >
+                  <ProjectCard project={p} index={i} />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+            {filtered.length === 0 && (
+              <p className="rounded-lg border border-border bg-card p-8 text-center text-sm text-muted-foreground">
+                No projects in this category yet.
+              </p>
+            )}
+          </motion.div>
+        </LayoutGroup>
       </div>
     </section>
   );
 }
 
 function ProjectCard({ project, index }: { project: typeof projects[number]; index: number }) {
+  const { isMinimal } = useAnimationMode();
   return (
     <motion.article
-      whileHover={{ y: -2 }}
+      whileHover={isMinimal ? undefined : { y: -2 }}
       transition={{ type: "spring", stiffness: 300, damping: 26 }}
       className="group relative overflow-hidden rounded-lg border border-border bg-card p-6 transition-colors hover:border-[oklch(1_0_0_/_14%)] sm:p-8"
     >
