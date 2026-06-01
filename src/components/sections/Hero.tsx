@@ -1,17 +1,32 @@
 import { motion, type Variants } from "framer-motion";
 import { Download, Github, Linkedin, ChevronDown } from "lucide-react";
 import { profile, socials } from "@/config/portfolio";
-
-const container: Variants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
-};
-const item: Variants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const } },
-};
+import { useAnimationMode } from "@/context/AnimationModeContext";
 
 export function Hero() {
+  const { isMinimal, intensity } = useAnimationMode();
+
+  const container: Variants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: isMinimal ? 0 : 0.05 + intensity * 0.06,
+        delayChildren: isMinimal ? 0 : 0.05 + intensity * 0.08,
+      },
+    },
+  };
+  const item: Variants = {
+    hidden: { opacity: 0, y: isMinimal ? 0 : 8 + intensity * 12 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: isMinimal ? 0.25 : 0.45 + intensity * 0.3,
+        ease: [0.22, 1, 0.36, 1] as const,
+      },
+    },
+  };
+
   const scrollTo = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
