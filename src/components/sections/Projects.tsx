@@ -1,10 +1,26 @@
-import { motion } from "framer-motion";
+import { useMemo, useState } from "react";
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/fx/Reveal";
 import { SectionLabel } from "@/components/sections/About";
 import { projects } from "@/config/portfolio";
 
+const FILTERS = ["All", "Full Stack", "Frontend", "AI"] as const;
+type Filter = (typeof FILTERS)[number];
+
+function matches(filter: Filter, tech: string[]) {
+  if (filter === "All") return true;
+  const s = tech.join(" ").toLowerCase();
+  if (filter === "Full Stack") return /node|express|mongo|supabase/.test(s);
+  if (filter === "Frontend") return /react|tailwind|next/.test(s);
+  if (filter === "AI") return /ai/.test(s);
+  return true;
+}
+
 export function Projects() {
+  const [filter, setFilter] = useState<Filter>("All");
+  const filtered = useMemo(() => projects.filter((p) => matches(filter, p.tech)), [filter]);
+
   return (
     <section id="projects" className="relative border-t border-border px-6 py-24">
       <div className="mx-auto max-w-6xl">
@@ -21,12 +37,55 @@ export function Projects() {
           </div>
         </Reveal>
 
-        <div className="mt-12 grid gap-4">
-          {projects.map((p, i) => (
-            <Reveal key={p.name} delay={i * 0.06}>
-              <ProjectCard project={p} index={i} />
-            </Reveal>
-          ))}
+        <Reveal delay={0.05}>
+          <LayoutGroup>
+            <div className="mt-10 flex flex-wrap items-center gap-1 rounded-full border border-border bg-card/60 p-1 w-fit">
+              {FILTERS.map((f) => {
+                const isActive = filter === f;
+                return (
+                  <button
+                    key={f}
+                    onClick={() => setFilter(f)}
+                    className={
+                      "relative rounded-full px-4 py-1.5 text-xs font-medium transition-colors " +
+                      (isActive ? "text-background" : "text-muted-foreground hover:text-foreground")
+                    }
+                  >
+                    {isActive && (
+                      <motion.span
+                        layoutId="project-filter-pill"
+                        className="absolute inset-0 rounded-full bg-foreground"
+                        transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                      />
+                    )}
+                    <span className="relative z-10">{f}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </LayoutGroup>
+        </Reveal>
+
+        <div className="mt-8 grid gap-4">
+          <AnimatePresence mode="popLayout">
+            {filtered.map((p, i) => (
+              <motion.div
+                key={p.name}
+                layout
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.45, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <ProjectCard project={p} index={i} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+          {filtered.length === 0 && (
+            <p className="rounded-lg border border-border bg-card p-8 text-center text-sm text-muted-foreground">
+              No projects in this category yet.
+            </p>
+          )}
         </div>
       </div>
     </section>

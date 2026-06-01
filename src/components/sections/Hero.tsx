@@ -1,6 +1,15 @@
-import { motion } from "framer-motion";
-import { Download, Github, Linkedin, Mail, ArrowRight } from "lucide-react";
+import { motion, type Variants } from "framer-motion";
+import { Download, Github, Linkedin, ChevronDown } from "lucide-react";
 import { profile, socials } from "@/config/portfolio";
+
+const container: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
+};
+const item: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const } },
+};
 
 export function Hero() {
   const scrollTo = (id: string) =>
@@ -9,14 +18,28 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[100svh] items-center px-6 pb-24 pt-32"
+      className="relative flex min-h-[100svh] items-center justify-center overflow-hidden px-6 pb-24 pt-32"
     >
-      <div className="mx-auto w-full max-w-5xl">
+      {/* Subtle ambient spotlight */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          background:
+            "radial-gradient(60% 50% at 50% 0%, oklch(0.7 0.12 235 / 0.10), transparent 70%)",
+        }}
+      />
+      <div className="pointer-events-none absolute inset-0 -z-10 dot-bg [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_75%)]" />
+
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="visible"
+        className="mx-auto w-full max-w-3xl text-center"
+      >
         <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs text-muted-foreground"
+          variants={item}
+          className="mx-auto inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-3 py-1 text-xs text-muted-foreground backdrop-blur-sm"
         >
           <span className="relative flex h-1.5 w-1.5">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
@@ -25,77 +48,85 @@ export function Hero() {
           Available for internships & full-time roles
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.05 }}
-          className="mt-8 text-balance text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl"
+        <motion.p
+          variants={item}
+          className="mt-8 text-sm font-medium tracking-[0.18em] text-muted-foreground uppercase"
         >
-          {profile.name}.
-          <br />
-          <span className="text-muted-foreground">Full Stack Developer.</span>
+          Hi, I'm {profile.name}
+        </motion.p>
+
+        <motion.h1
+          variants={item}
+          className="mt-4 text-balance text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl"
+        >
+          Full Stack Developer
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
+          variants={item}
+          className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
         >
           {profile.intro} I build production web products with React, Node, and TypeScript —
           with a focus on performance, accessibility, and clean architecture.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.25 }}
-          className="mt-10 flex flex-wrap items-center gap-3"
+          variants={item}
+          className="mt-10 flex flex-wrap items-center justify-center gap-3"
         >
+          <button
+            onClick={() => scrollTo("projects")}
+            className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-4 py-2.5 text-sm font-medium text-foreground transition-all hover:-translate-y-0.5 hover:bg-secondary hover:border-[oklch(1_0_0_/_18%)]"
+          >
+            <Github className="h-4 w-4" />
+            View Projects
+          </button>
+          <button
+            onClick={() => scrollTo("contact")}
+            className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-4 py-2.5 text-sm font-medium text-foreground transition-all hover:-translate-y-0.5 hover:bg-secondary hover:border-[oklch(1_0_0_/_18%)]"
+          >
+            Contact Me
+          </button>
           <a
             href={profile.resumeUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-md bg-foreground px-4 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-90"
+            className="inline-flex items-center gap-2 rounded-md bg-foreground px-4 py-2.5 text-sm font-medium text-background transition-all hover:-translate-y-0.5 hover:opacity-90"
           >
             <Download className="h-4 w-4" />
             Resume
           </a>
-          <button
-            onClick={() => scrollTo("contact")}
-            className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
-          >
-            <Mail className="h-4 w-4" />
-            Get in touch
-          </button>
-          <a
-            href={socials.github}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-md px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <Github className="h-4 w-4" /> GitHub
-          </a>
-          <a
-            href={socials.linkedin}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-md px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <Linkedin className="h-4 w-4" /> LinkedIn
-          </a>
         </motion.div>
 
-        <motion.button
-          onClick={() => scrollTo("about")}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-20 flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-foreground"
+        <motion.div
+          variants={item}
+          className="mt-8 flex items-center justify-center gap-5 text-muted-foreground"
         >
-          Scroll <ArrowRight className="h-3 w-3 rotate-90" />
-        </motion.button>
-      </div>
+          <a href={socials.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="transition-colors hover:text-foreground">
+            <Github className="h-4 w-4" />
+          </a>
+          <a href={socials.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="transition-colors hover:text-foreground">
+            <Linkedin className="h-4 w-4" />
+          </a>
+          <a href={socials.leetcode} target="_blank" rel="noreferrer" className="text-xs transition-colors hover:text-foreground">
+            LeetCode ↗
+          </a>
+        </motion.div>
+      </motion.div>
+
+      <motion.button
+        onClick={() => scrollTo("about")}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 6, 0] }}
+        transition={{
+          opacity: { delay: 1.1, duration: 0.6 },
+          y: { delay: 1.1, duration: 2, repeat: Infinity, ease: "easeInOut" },
+        }}
+        aria-label="Scroll to about"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 grid h-9 w-9 place-items-center rounded-full border border-border bg-card/60 text-muted-foreground backdrop-blur-sm transition-colors hover:text-foreground"
+      >
+        <ChevronDown className="h-4 w-4" />
+      </motion.button>
     </section>
   );
 }
