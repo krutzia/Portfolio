@@ -1,17 +1,32 @@
 import { motion, type Variants } from "framer-motion";
 import { Download, Github, Linkedin, ChevronDown } from "lucide-react";
 import { profile, socials } from "@/config/portfolio";
-
-const container: Variants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
-};
-const item: Variants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const } },
-};
+import { useAnimationMode } from "@/context/AnimationModeContext";
 
 export function Hero() {
+  const { isMinimal, intensity } = useAnimationMode();
+
+  const container: Variants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: isMinimal ? 0 : 0.05 + intensity * 0.06,
+        delayChildren: isMinimal ? 0 : 0.05 + intensity * 0.08,
+      },
+    },
+  };
+  const item: Variants = {
+    hidden: { opacity: 0, y: isMinimal ? 0 : 8 + intensity * 12 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: isMinimal ? 0.25 : 0.45 + intensity * 0.3,
+        ease: [0.22, 1, 0.36, 1] as const,
+      },
+    },
+  };
+
   const scrollTo = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
@@ -42,7 +57,9 @@ export function Hero() {
           className="mx-auto inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-3 py-1 text-xs text-muted-foreground backdrop-blur-sm"
         >
           <span className="relative flex h-1.5 w-1.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
+            {!isMinimal && (
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
+            )}
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
           </span>
           Available for internships & full-time roles
@@ -117,11 +134,19 @@ export function Hero() {
       <motion.button
         onClick={() => scrollTo("about")}
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 6, 0] }}
-        transition={{
-          opacity: { delay: 1.1, duration: 0.6 },
-          y: { delay: 1.1, duration: 2, repeat: Infinity, ease: "easeInOut" },
-        }}
+        animate={
+          isMinimal
+            ? { opacity: 0.8 }
+            : { opacity: 1, y: [0, 4 + intensity * 4, 0] }
+        }
+        transition={
+          isMinimal
+            ? { duration: 0.3 }
+            : {
+                opacity: { delay: 0.9, duration: 0.6 },
+                y: { delay: 0.9, duration: 2.2 - intensity * 0.4, repeat: Infinity, ease: "easeInOut" },
+              }
+        }
         aria-label="Scroll to about"
         className="absolute bottom-8 left-1/2 -translate-x-1/2 grid h-9 w-9 place-items-center rounded-full border border-border bg-card/60 text-muted-foreground backdrop-blur-sm transition-colors hover:text-foreground"
       >

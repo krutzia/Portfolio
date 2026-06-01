@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sparkles, Gauge, Minus } from "lucide-react";
+import { useAnimationMode, type AnimationMode } from "@/context/AnimationModeContext";
 
 const NAV = [
   { id: "home", label: "Home" },
@@ -11,10 +12,17 @@ const NAV = [
   { id: "contact", label: "Contact" },
 ];
 
+const MODES: { id: AnimationMode; label: string; Icon: typeof Sparkles }[] = [
+  { id: "minimal", label: "Minimal", Icon: Minus },
+  { id: "balanced", label: "Balanced", Icon: Gauge },
+  { id: "cinematic", label: "Cinematic", Icon: Sparkles },
+];
+
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("home");
+  const { mode, setMode } = useAnimationMode();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -94,6 +102,39 @@ export function Navbar() {
         </LayoutGroup>
 
         <div className="flex items-center gap-2">
+          <LayoutGroup id="motion-mode">
+            <div
+              role="group"
+              aria-label="Animation mode"
+              className="hidden items-center gap-0.5 rounded-md border border-border bg-card/60 p-0.5 lg:flex"
+            >
+              {MODES.map(({ id, label, Icon }) => {
+                const isActive = mode === id;
+                return (
+                  <button
+                    key={id}
+                    onClick={() => setMode(id)}
+                    title={`${label} animations`}
+                    aria-pressed={isActive}
+                    className={
+                      "relative grid h-7 w-7 place-items-center rounded transition-colors " +
+                      (isActive ? "text-background" : "text-muted-foreground hover:text-foreground")
+                    }
+                  >
+                    {isActive && (
+                      <motion.span
+                        layoutId="motion-mode-pill"
+                        className="absolute inset-0 rounded bg-foreground"
+                        transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                      />
+                    )}
+                    <Icon className="relative z-10 h-3.5 w-3.5" />
+                  </button>
+                );
+              })}
+            </div>
+          </LayoutGroup>
+
           <a
             href="/resume.pdf"
             target="_blank"
@@ -139,6 +180,29 @@ export function Navbar() {
               >
                 Resume ↗
               </a>
+              <div className="mt-2 flex items-center gap-1 border-t border-border pt-3">
+                <span className="px-3 text-[11px] uppercase tracking-wider text-muted-foreground">
+                  Motion
+                </span>
+                {MODES.map(({ id, label, Icon }) => {
+                  const isActive = mode === id;
+                  return (
+                    <button
+                      key={id}
+                      onClick={() => setMode(id)}
+                      className={
+                        "inline-flex items-center gap-1.5 rounded-md border px-2 py-1 text-xs transition-colors " +
+                        (isActive
+                          ? "border-foreground/40 bg-foreground text-background"
+                          : "border-border text-muted-foreground hover:text-foreground")
+                      }
+                    >
+                      <Icon className="h-3 w-3" />
+                      {label}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </motion.div>
         )}
