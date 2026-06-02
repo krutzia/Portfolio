@@ -3,8 +3,9 @@ import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/fx/Reveal";
 import { SectionLabel } from "@/components/sections/About";
-import { projects } from "@/config/portfolio";
+import { projects, type Project } from "@/config/portfolio";
 import { useAnimationMode } from "@/context/AnimationModeContext";
+import { ResuMatchMockup, FitTrackMockup, SiloMockup } from "@/components/sections/ProjectMockups";
 
 const FILTERS = ["All", "Full Stack", "Frontend", "AI"] as const;
 type Filter = (typeof FILTERS)[number];
@@ -18,7 +19,6 @@ function matches(filter: Filter, tech: string[]) {
   return true;
 }
 
-// Stable: preserve original config order with an index, then filter.
 const INDEXED = projects.map((p, i) => ({ p, i }));
 
 export function Projects() {
@@ -62,7 +62,7 @@ export function Projects() {
             <div
               role="tablist"
               aria-label="Project category filter"
-              className="mt-10 flex flex-wrap items-center gap-1 rounded-full border border-border bg-card/60 p-1 w-fit"
+              className="mt-10 flex w-fit flex-wrap items-center gap-1 rounded-full border border-border bg-card/60 p-1"
             >
               {FILTERS.map((f) => {
                 const isActive = filter === f;
@@ -108,7 +108,7 @@ export function Projects() {
         </Reveal>
 
         <LayoutGroup id="project-grid">
-          <motion.div layout className="mt-8 grid gap-4">
+          <motion.div layout className="mt-8 grid gap-5">
             <AnimatePresence mode="popLayout" initial={false}>
               {filtered.map(({ p, i }, displayIndex) => (
                 <motion.div
@@ -142,22 +142,22 @@ export function Projects() {
   );
 }
 
-function ProjectCard({ project, index }: { project: typeof projects[number]; index: number }) {
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   const { isMinimal } = useAnimationMode();
   return (
     <motion.article
-      whileHover={isMinimal ? undefined : { y: -2 }}
+      whileHover={isMinimal ? undefined : { y: -3 }}
       transition={{ type: "spring", stiffness: 300, damping: 26 }}
-      className="group relative overflow-hidden rounded-lg border border-border bg-card p-6 transition-colors hover:border-[oklch(1_0_0_/_14%)] sm:p-8"
+      className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-[oklch(1_0_0_/_16%)] hover:shadow-[0_20px_60px_-30px_rgba(0,0,0,0.55)] sm:p-8"
     >
-      <div className="grid gap-8 md:grid-cols-[1fr_1fr] md:items-center">
+      <div className="grid gap-10 md:grid-cols-[1fr_1.05fr] md:items-center">
         <div>
           <div className="flex items-center gap-3 text-xs text-muted-foreground">
             <span className="font-mono">0{index + 1}</span>
             <span className="h-px w-6 bg-border" />
             <span>{project.tagline}</span>
           </div>
-          <h3 className="mt-3 text-2xl font-semibold sm:text-3xl">{project.name}</h3>
+          <h3 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">{project.name}</h3>
           <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">
             {project.description}
           </p>
@@ -204,7 +204,11 @@ function ProjectCard({ project, index }: { project: typeof projects[number]; ind
           </div>
         </div>
 
-        <ProjectPreview project={project} />
+        <BrowserFrame host={hostOf(project.liveUrl)}>
+          {project.mockup === "resumatch" && <ResuMatchMockup />}
+          {project.mockup === "fittrack" && <FitTrackMockup />}
+          {project.mockup === "silo" && <SiloMockup />}
+        </BrowserFrame>
       </div>
 
       <ArrowUpRight className="absolute right-5 top-5 h-4 w-4 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
@@ -212,37 +216,30 @@ function ProjectCard({ project, index }: { project: typeof projects[number]; ind
   );
 }
 
-function ProjectPreview({ project }: { project: typeof projects[number] }) {
-  let host = "";
+function hostOf(url: string) {
   try {
-    host = new URL(project.liveUrl).hostname;
+    return new URL(url).hostname;
   } catch {
-    host = "";
+    return "";
   }
+}
+
+function BrowserFrame({ host, children }: { host: string; children: React.ReactNode }) {
   return (
-    <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-border bg-background/60">
-      <div className="flex items-center gap-1.5 border-b border-border bg-secondary/40 px-3 py-2">
+    <motion.div
+      whileHover={{ scale: 1.015 }}
+      transition={{ type: "spring", stiffness: 220, damping: 24 }}
+      className="relative aspect-[4/3] overflow-hidden rounded-lg border border-border bg-[oklch(0.13_0.005_260)] shadow-[0_30px_80px_-40px_rgba(0,0,0,0.7)]"
+    >
+      <div className="flex items-center gap-1.5 border-b border-border bg-[oklch(0.16_0.005_260)] px-3 py-2">
         <span className="h-2 w-2 rounded-full bg-muted-foreground/30" />
         <span className="h-2 w-2 rounded-full bg-muted-foreground/30" />
         <span className="h-2 w-2 rounded-full bg-muted-foreground/30" />
-        <span className="ml-3 truncate font-mono text-[10px] text-muted-foreground">{host}</span>
+        <span className="ml-3 truncate rounded bg-background/40 px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
+          {host}
+        </span>
       </div>
-      <div className="relative h-full grid-bg">
-        <div className="absolute inset-0 flex flex-col justify-end p-5">
-          <div className="space-y-2">
-            <div className="h-2.5 w-2/3 rounded bg-muted-foreground/20" />
-            <div className="h-2.5 w-1/2 rounded bg-muted-foreground/10" />
-          </div>
-          <div className="mt-4 grid grid-cols-3 gap-2">
-            {[0, 1, 2].map((i) => (
-              <div key={i} className="h-14 rounded border border-border bg-card/60" />
-            ))}
-          </div>
-        </div>
-        <div className="absolute left-5 top-5 font-mono text-4xl font-semibold text-muted-foreground/25">
-          {project.name.slice(0, 1)}
-        </div>
-      </div>
-    </div>
+      <div className="relative h-[calc(100%-29px)] overflow-hidden">{children}</div>
+    </motion.div>
   );
 }
