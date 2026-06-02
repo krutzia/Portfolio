@@ -66,12 +66,13 @@ export function Navbar() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5">
         <button
           onClick={() => scrollTo("home")}
-          className="flex items-center gap-2 text-sm font-medium tracking-tight text-foreground"
+          className="group flex items-center gap-2.5 text-foreground"
+          aria-label="Kashish — home"
         >
-          <span className="grid h-6 w-6 place-items-center rounded-md border border-border bg-card text-[11px] font-semibold">
+          <span className="grid h-9 w-9 place-items-center rounded-lg border border-border bg-gradient-to-br from-card to-secondary text-[15px] font-bold tracking-tight transition-colors group-hover:border-[oklch(1_0_0_/_18%)]">
             K
           </span>
-          <span>Kashish</span>
+          <span className="text-[17px] font-semibold tracking-tight">Kashish</span>
         </button>
 
         <LayoutGroup>

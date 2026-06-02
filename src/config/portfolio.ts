@@ -1,7 +1,8 @@
 /**
  * Portfolio configuration — single source of truth.
- * Edit this file to update any content on the site.
  */
+
+import portrait from "@/assets/kashish-portrait.jpg.asset.json";
 
 export const profile = {
   name: "Kashish",
@@ -11,6 +12,7 @@ export const profile = {
   location: "Noida, India",
   email: "kashish860458@gmail.com",
   phone: "+91 8604585161",
+  portraitUrl: portrait.url,
   education: {
     school: "JSS Academy of Technical Education, Noida",
     degree: "B.Tech in Computer Science and Engineering",
@@ -34,37 +36,71 @@ export const socials = {
   email: "mailto:kashish860458@gmail.com",
 };
 
+export type Skill = { name: string; level: number };
 export type SkillCategory = {
   name: string;
-  accent: string; // oklch token name
-  skills: string[];
+  accent: string;
+  skills: Skill[];
 };
 
 export const skillCategories: SkillCategory[] = [
   {
     name: "Frontend",
     accent: "var(--cosmos-violet)",
-    skills: ["React", "Next.js", "Tailwind CSS", "Bootstrap"],
+    skills: [
+      { name: "React", level: 92 },
+      { name: "Next.js", level: 80 },
+      { name: "TypeScript", level: 85 },
+      { name: "Tailwind CSS", level: 90 },
+    ],
   },
   {
     name: "Backend",
     accent: "var(--cosmos-cyan)",
-    skills: ["Node.js", "Express.js", "REST APIs"],
+    skills: [
+      { name: "Node.js", level: 85 },
+      { name: "Express.js", level: 82 },
+      { name: "REST APIs", level: 88 },
+    ],
   },
   {
     name: "Database",
     accent: "var(--cosmos-pink)",
-    skills: ["MongoDB", "MySQL", "PostgreSQL", "Supabase"],
+    skills: [
+      { name: "MongoDB", level: 80 },
+      { name: "PostgreSQL", level: 75 },
+      { name: "Supabase", level: 82 },
+      { name: "MySQL", level: 78 },
+    ],
   },
   {
-    name: "Tools",
+    name: "Tools & Cloud",
     accent: "var(--cosmos-amber)",
-    skills: ["Git", "GitHub", "Docker", "AWS", "Netlify", "Render"],
+    skills: [
+      { name: "Git / GitHub", level: 88 },
+      { name: "Docker", level: 70 },
+      { name: "AWS", level: 75 },
+      { name: "Vercel", level: 90 },
+    ],
   },
   {
     name: "Languages",
     accent: "var(--cosmos-emerald)",
-    skills: ["C++", "Java", "Python", "JavaScript", "TypeScript", "SQL"],
+    skills: [
+      { name: "C++", level: 90 },
+      { name: "Java", level: 82 },
+      { name: "Python", level: 80 },
+      { name: "JavaScript", level: 90 },
+    ],
+  },
+  {
+    name: "Problem Solving",
+    accent: "var(--cosmos-violet)",
+    skills: [
+      { name: "Data Structures", level: 90 },
+      { name: "Algorithms", level: 88 },
+      { name: "System Design", level: 72 },
+    ],
   },
 ];
 
@@ -77,6 +113,7 @@ export type Project = {
   liveUrl: string;
   githubUrl?: string;
   accent: string;
+  mockup: "resumatch" | "fittrack" | "silo";
 };
 
 export const projects: Project[] = [
@@ -94,6 +131,7 @@ export const projects: Project[] = [
     liveUrl: "https://ai-powered-resume-and-jobmatcher.vercel.app/",
     githubUrl: "https://github.com/krutzia",
     accent: "var(--cosmos-violet)",
+    mockup: "resumatch",
   },
   {
     name: "FitTrack",
@@ -109,6 +147,7 @@ export const projects: Project[] = [
     liveUrl: "https://fittrack-ai-eta.vercel.app/",
     githubUrl: "https://github.com/krutzia",
     accent: "var(--cosmos-cyan)",
+    mockup: "fittrack",
   },
   {
     name: "Silo Study AI",
@@ -124,6 +163,7 @@ export const projects: Project[] = [
     liveUrl: "https://silo-study-j0u6igfpu-krutzias-projects.vercel.app/",
     githubUrl: "https://github.com/krutzia",
     accent: "var(--cosmos-pink)",
+    mockup: "silo",
   },
 ];
 
@@ -135,9 +175,9 @@ export type Achievement = {
 };
 
 export const achievements: Achievement[] = [
-  { value: 450, suffix: "+", label: "LeetCode Problems Solved", sub: "DSA & algorithms" },
+  { value: 600, suffix: "+", label: "LeetCode Problems Solved", sub: "DSA, algorithms & system design" },
   { value: 2, suffix: "", label: "AWS Certifications", sub: "Cloud & AI Practitioner" },
-  { value: 3, suffix: "", label: "Shipped Projects", sub: "Live on production" },
+  { value: 3, suffix: "", label: "Full Stack Projects Shipped", sub: "Live in production" },
 ];
 
 export const certifications = [
