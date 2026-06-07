@@ -26,7 +26,7 @@ export function CursorGlow() {
       pos.current.x += (target.current.x - pos.current.x) * 0.18;
       pos.current.y += (target.current.y - pos.current.y) * 0.18;
       if (ref.current) {
-        ref.current.style.transform = `translate3d(${pos.current.x - 250}px, ${pos.current.y - 250}px, 0)`;
+        ref.current.style.transform = `translate3d(${pos.current.x - 300}px, ${pos.current.y - 300}px, 0)`;
       }
       raf.current = requestAnimationFrame(tick);
     };
