@@ -2,7 +2,7 @@
  * Portfolio configuration — single source of truth.
  */
 
-import portrait from "@/assets/kashish-portrait.jpg.asset.json";
+import portrait from "@/assets/kashish-portrait.png.asset.json";
 
 export const profile = {
   name: "Kashish",
