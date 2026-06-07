@@ -162,41 +162,60 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* RIGHT — Portrait */}
+        {/* RIGHT — Portrait (frameless, editorial) */}
         <motion.div
           variants={item}
-          className="order-1 mx-auto w-full max-w-sm lg:order-2 lg:max-w-none"
+          className="relative order-1 mx-auto w-full max-w-md lg:order-2 lg:h-[86vh] lg:min-h-[620px] lg:max-w-none"
         >
-          <div className="relative">
-            <div
-              aria-hidden
-              className="absolute -inset-6 -z-10 rounded-[2rem] opacity-60"
+          {/* Ambient glow + soft studio backdrop */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 -z-10"
+            style={{
+              background:
+                "radial-gradient(45% 55% at 55% 40%, oklch(0.55 0.08 240 / 0.22), transparent 72%), radial-gradient(70% 75% at 50% 55%, oklch(0.22 0.01 260 / 0.7), transparent 78%)",
+            }}
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 -z-10"
+            style={{
+              background:
+                "radial-gradient(28% 38% at 68% 22%, oklch(1 0 0 / 0.06), transparent 70%)",
+            }}
+          />
+
+          <motion.div
+            whileHover={isMinimal ? undefined : { y: -3 }}
+            transition={{ type: "spring", stiffness: 180, damping: 22 }}
+            className="relative h-[70vh] min-h-[480px] w-full lg:h-full"
+          >
+            <img
+              src={profile.portraitUrl}
+              alt="Portrait of Kashish — Full Stack Developer"
+              loading="eager"
+              className="absolute inset-0 h-full w-full select-none object-cover object-top"
               style={{
-                background:
-                  "radial-gradient(60% 60% at 50% 40%, oklch(0.55 0.08 240 / 0.18), transparent 70%)",
+                WebkitMaskImage:
+                  "radial-gradient(72% 82% at 50% 42%, #000 52%, rgba(0,0,0,0.55) 78%, transparent 100%)",
+                maskImage:
+                  "radial-gradient(72% 82% at 50% 42%, #000 52%, rgba(0,0,0,0.55) 78%, transparent 100%)",
               }}
             />
-            <motion.div
-              whileHover={isMinimal ? undefined : { y: -4 }}
-              transition={{ type: "spring", stiffness: 200, damping: 24 }}
-              className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)]"
-            >
-              <img
-                src={profile.portraitUrl}
-                alt="Portrait of Kashish — Full Stack Developer"
-                className="aspect-[3/4] w-full object-cover"
-                loading="eager"
-              />
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent"
-              />
-              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between rounded-md border border-border/60 bg-background/70 px-3 py-2 text-[11px] text-muted-foreground backdrop-blur-md">
-                <span className="font-mono">@krutzia</span>
-                <span>Noida · India</span>
-              </div>
-            </motion.div>
-          </div>
+            {/* Vignette + edge fades into page background */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(to bottom, transparent 55%, var(--background) 100%), linear-gradient(to right, var(--background) 0%, transparent 14%, transparent 86%, var(--background) 100%)",
+              }}
+            />
+            {/* Frameless caption */}
+            <div className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 text-[10px] font-mono uppercase tracking-[0.35em] text-muted-foreground/70">
+              @krutzia · noida
+            </div>
+          </motion.div>
         </motion.div>
       </motion.div>
 
