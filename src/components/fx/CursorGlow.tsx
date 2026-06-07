@@ -26,7 +26,7 @@ export function CursorGlow() {
       pos.current.x += (target.current.x - pos.current.x) * 0.18;
       pos.current.y += (target.current.y - pos.current.y) * 0.18;
       if (ref.current) {
-        ref.current.style.transform = `translate3d(${pos.current.x - 250}px, ${pos.current.y - 250}px, 0)`;
+        ref.current.style.transform = `translate3d(${pos.current.x - 300}px, ${pos.current.y - 300}px, 0)`;
       }
       raf.current = requestAnimationFrame(tick);
     };
@@ -46,15 +46,15 @@ export function CursorGlow() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none fixed inset-0 z-[60] overflow-hidden mix-blend-screen"
+      className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden"
     >
       <div
         ref={ref}
-        className="absolute left-0 top-0 h-[500px] w-[500px] rounded-full will-change-transform"
+        className="absolute left-0 top-0 h-[600px] w-[600px] rounded-full will-change-transform"
         style={{
           background:
-            "radial-gradient(circle, oklch(0.62 0.22 320 / 0.35) 0%, oklch(0.55 0.2 280 / 0.18) 30%, transparent 65%)",
-          filter: "blur(40px)",
+            "radial-gradient(circle, oklch(0.65 0.28 320 / 0.55) 0%, oklch(0.55 0.24 285 / 0.30) 25%, oklch(0.5 0.2 270 / 0.12) 50%, transparent 70%)",
+          filter: "blur(60px)",
         }}
       />
     </div>
