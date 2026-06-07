@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { AnimationModeProvider } from "@/context/AnimationModeContext";
 import { Navbar } from "@/components/layout/Navbar";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
+import { CursorGlow } from "@/components/fx/CursorGlow";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { SkillConstellation } from "@/components/sections/SkillConstellation";
@@ -37,6 +38,7 @@ function Home() {
     <AnimationModeProvider>
       <div className="relative min-h-screen bg-background text-foreground">
         <ScrollProgress />
+        <CursorGlow />
         <Navbar />
         <main>
           <Hero />
