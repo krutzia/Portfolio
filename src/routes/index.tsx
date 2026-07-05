@@ -40,6 +40,8 @@ function Home() {
       <div className="relative min-h-screen bg-background text-foreground">
         <ScrollProgress />
         <CursorGlow />
+        <PremiumCursor />
+
         <Navbar />
         <main>
           <Hero />
