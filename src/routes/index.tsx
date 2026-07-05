@@ -3,6 +3,7 @@ import { AnimationModeProvider } from "@/context/AnimationModeContext";
 import { Navbar } from "@/components/layout/Navbar";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { CursorGlow } from "@/components/fx/CursorGlow";
+import { PremiumCursor } from "@/components/fx/PremiumCursor";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { SkillConstellation } from "@/components/sections/SkillConstellation";
@@ -39,6 +40,8 @@ function Home() {
       <div className="relative min-h-screen bg-background text-foreground">
         <ScrollProgress />
         <CursorGlow />
+        <PremiumCursor />
+
         <Navbar />
         <main>
           <Hero />
