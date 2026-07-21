@@ -37,6 +37,7 @@ function Home() {
   return (
     <AnimationModeProvider>
       <div className="relative min-h-screen bg-background text-foreground">
+        <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 grid-bg opacity-70" />
         <ScrollProgress />
         <PremiumCursor />
 

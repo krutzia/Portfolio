@@ -66,13 +66,13 @@ export function Navbar() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5">
         <button
           onClick={() => scrollTo("home")}
-          className="group flex items-center gap-2.5 text-foreground"
+          className="group flex flex-col items-start leading-tight text-foreground"
           aria-label="Kashish — home"
         >
-          <span className="grid h-9 w-9 place-items-center rounded-lg border border-border bg-gradient-to-br from-card to-secondary text-[15px] font-bold tracking-tight transition-colors group-hover:border-[oklch(1_0_0_/_18%)]">
-            K
+          <span className="text-[13px] font-bold uppercase tracking-[0.14em]">KASHISH</span>
+          <span className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+            PORTFOLIO <span className="text-brand-pink">/ ©26</span>
           </span>
-          <span className="text-[17px] font-semibold tracking-tight">Kashish</span>
         </button>
 
         <LayoutGroup>
@@ -140,9 +140,13 @@ export function Navbar() {
             href="/resume.pdf"
             target="_blank"
             rel="noreferrer"
-            className="hidden rounded-md border border-border bg-card px-3 py-1.5 text-sm text-foreground transition-colors hover:bg-secondary md:inline-flex"
+            className="hidden items-center gap-2 rounded-full border border-brand-pink/70 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-foreground transition-colors hover:bg-brand-pink/10 md:inline-flex"
           >
-            Resume
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-pink opacity-70" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand-pink" />
+            </span>
+            Available
           </a>
           <button
             onClick={() => setOpen((v) => !v)}
