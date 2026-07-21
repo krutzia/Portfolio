@@ -97,27 +97,37 @@ html { color-scheme: dark; }
 @layer utilities {
   /* Reduced glass — almost flat with thin border */
   .panel {
-    background: oklch(0.19 0.006 260 / 0.6);
+    background: oklch(0.10 0.003 260 / 0.6);
     border: 1px solid var(--color-border);
   }
   .panel-hover {
     transition: background-color 200ms ease, border-color 200ms ease;
   }
   .panel-hover:hover {
-    background: oklch(0.22 0.006 260 / 0.7);
+    background: oklch(0.14 0.004 260 / 0.7);
     border-color: oklch(1 0 0 / 14%);
   }
   .grid-bg {
     background-image:
-      linear-gradient(to right, oklch(1 0 0 / 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, oklch(1 0 0 / 0.03) 1px, transparent 1px);
-    background-size: 56px 56px;
+      linear-gradient(to right, oklch(1 0 0 / 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(1 0 0 / 0.035) 1px, transparent 1px);
+    background-size: 96px 96px;
   }
   .dot-bg {
     background-image: radial-gradient(oklch(1 0 0 / 0.07) 1px, transparent 1px);
     background-size: 22px 22px;
   }
   .text-accent-blue { color: var(--accent-blue); }
+  .text-brand-pink { color: var(--brand-pink); }
+  .bg-brand-pink { background-color: var(--brand-pink); }
+  .border-brand-pink { border-color: var(--brand-pink); }
+  .mono-label {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 11px;
+    color: var(--muted-foreground);
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {
