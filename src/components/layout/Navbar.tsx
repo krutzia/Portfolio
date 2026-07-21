@@ -140,9 +140,13 @@ export function Navbar() {
             href="/resume.pdf"
             target="_blank"
             rel="noreferrer"
-            className="hidden rounded-md border border-border bg-card px-3 py-1.5 text-sm text-foreground transition-colors hover:bg-secondary md:inline-flex"
+            className="hidden items-center gap-2 rounded-full border border-brand-pink/70 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-foreground transition-colors hover:bg-brand-pink/10 md:inline-flex"
           >
-            Resume
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-pink opacity-70" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand-pink" />
+            </span>
+            Available
           </a>
           <button
             onClick={() => setOpen((v) => !v)}
