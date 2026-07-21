@@ -35,7 +35,7 @@ export function About() {
     <section id="about" className="relative border-t border-border px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <SectionLabel>About</SectionLabel>
+          <SectionLabel number="01">About — the operator behind the code</SectionLabel>
           <h2 className="mt-4 max-w-3xl text-3xl font-semibold leading-tight sm:text-4xl md:text-[2.75rem]">
             Building products, solving problems, and creating software people actually use.
           </h2>
@@ -64,9 +64,14 @@ export function About() {
   );
 }
 
-export function SectionLabel({ children }: { children: React.ReactNode }) {
+export function SectionLabel({ children, number }: { children: React.ReactNode; number?: string }) {
   return (
-    <div className="flex items-center gap-3 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+    <div className="flex items-center gap-3 font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-muted-foreground">
+      {number && (
+        <span className="inline-flex h-5 items-center rounded-sm border border-brand-pink/70 px-1.5 text-brand-pink">
+          {number}
+        </span>
+      )}
       <span className="h-px w-6 bg-border" />
       {children}
     </div>
