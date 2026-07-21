@@ -55,38 +55,35 @@ export function Hero() {
         <div className="order-2 text-left lg:order-1">
           <motion.div
             variants={item}
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1 text-xs text-muted-foreground backdrop-blur-sm"
+            className="font-mono text-[11px] uppercase tracking-[0.22em] text-brand-pink"
           >
-            <span className="relative flex h-1.5 w-1.5">
-              {!isMinimal && (
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
-              )}
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
-            </span>
-            Available for internships & full-time roles
+            [ initializing — portfolio_2026 // kashish online ]
           </motion.div>
-
-          <motion.p
-            variants={item}
-            className="mt-8 text-xs font-medium uppercase tracking-[0.22em] text-muted-foreground"
-          >
-            Hi, I'm
-          </motion.p>
 
           <motion.h1
             variants={item}
-            className="mt-3 text-[clamp(4rem,12vw,9rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-foreground"
+            className="mt-10 text-[clamp(4rem,13vw,10rem)] font-extrabold leading-[0.9] tracking-[-0.045em] text-foreground"
           >
-            Kashish
+            STAY
+            <br />
+            <span className="text-brand-pink">CURIOUS.</span>
           </motion.h1>
 
           <motion.p
             variants={item}
-            className="mt-4 text-lg font-medium text-muted-foreground sm:text-xl"
+            className="mt-6 font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground"
           >
-            <span className="text-foreground">Full Stack Developer</span>
-            <span className="mx-3 text-border">·</span>
-            Problem Solver
+            Developer <span className="text-brand-pink">/</span> Problem Solver{" "}
+            <span className="text-brand-pink">/</span> Builder
+          </motion.p>
+
+          <motion.p
+            variants={item}
+            className="mt-6 max-w-xl text-[15px] leading-relaxed text-muted-foreground"
+          >
+            I'm <span className="text-foreground">Kashish</span> — final-year CS student
+            crafting production-grade web products with React, Node, and TypeScript. Focused
+            on performance, accessibility, and clean architecture.
           </motion.p>
 
           <motion.p
