@@ -86,13 +86,6 @@ export function Hero() {
             on performance, accessibility, and clean architecture.
           </motion.p>
 
-          <motion.p
-            variants={item}
-            className="mt-6 max-w-xl text-[15px] leading-relaxed text-muted-foreground"
-          >
-            Final-year CS student crafting production-grade web products with React, Node, and
-            TypeScript. Focused on performance, accessibility, and clean architecture.
-          </motion.p>
 
           <motion.div
             variants={item}
