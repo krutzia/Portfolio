@@ -292,3 +292,86 @@ function Ring({ value, color }: { value: number; color: string }) {
     </div>
   );
 }
+
+export function GenericMockup({
+  title,
+  tag,
+  tech,
+  accent = "oklch(0.72 0.31 350)",
+}: {
+  title: string;
+  tag: string;
+  tech: string[];
+  accent?: string;
+}) {
+  const initials = title
+    .split(" ")
+    .map((w) => w[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+  return (
+    <div className="relative flex h-full flex-col bg-[oklch(0.13_0.005_260)] p-4 text-[10px] text-foreground/90">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-40"
+        style={{
+          background: `radial-gradient(60% 60% at 80% 0%, ${accent}22, transparent 60%), radial-gradient(50% 50% at 0% 100%, ${accent}18, transparent 60%)`,
+        }}
+      />
+      <div className="relative flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div
+            className="grid h-6 w-6 place-items-center rounded-md text-[10px] font-bold text-background"
+            style={{ background: accent }}
+          >
+            {initials}
+          </div>
+          <div>
+            <div className="text-[11px] font-semibold leading-none">{title}</div>
+            <div className="mt-1 text-[9px] text-muted-foreground">{tag}</div>
+          </div>
+        </div>
+        <div className="flex gap-1">
+          <span className="h-1 w-1 rounded-full bg-muted-foreground/50" />
+          <span className="h-1 w-1 rounded-full bg-muted-foreground/50" />
+          <span className="h-1 w-1 rounded-full bg-muted-foreground/50" />
+        </div>
+      </div>
+
+      <div className="relative mt-3 grid flex-1 grid-cols-3 gap-2">
+        {[0, 1, 2].map((i) => (
+          <div
+            key={i}
+            className="rounded-md border border-border bg-background/40 p-2"
+          >
+            <div className="h-1 w-6 rounded-full bg-foreground/50" />
+            <div
+              className="mt-2 h-6 rounded-sm"
+              style={{ background: `linear-gradient(135deg, ${accent}55, ${accent}11)` }}
+            />
+            <div className="mt-1.5 h-1 w-8 rounded-full bg-muted-foreground/30" />
+            <div className="mt-1 h-1 w-5 rounded-full bg-muted-foreground/20" />
+          </div>
+        ))}
+      </div>
+
+      <div className="relative mt-3 rounded-md border border-border bg-background/40 p-2">
+        <div className="flex items-center justify-between">
+          <div className="h-1 w-10 rounded-full bg-muted-foreground/40" />
+          <div className="text-[8px] font-mono text-muted-foreground">v1.0</div>
+        </div>
+        <div className="mt-2 flex flex-wrap gap-1">
+          {tech.slice(0, 5).map((t) => (
+            <span
+              key={t}
+              className="rounded-sm border border-border bg-secondary/50 px-1 py-0.5 text-[8px] text-muted-foreground"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
