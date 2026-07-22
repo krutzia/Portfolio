@@ -23,14 +23,34 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="relative border-t border-border px-6 pb-16 pt-24">
-      <div className="mx-auto max-w-6xl">
+    <section id="contact" className="relative overflow-hidden border-t border-border px-6 pb-16 pt-24">
+      <div className="mx-auto max-w-7xl">
         <Reveal>
-          <SectionLabel>Get In Touch</SectionLabel>
-          <h2 className="mt-4 max-w-2xl text-3xl font-semibold leading-tight sm:text-4xl">
-            Let's build something together.
+          <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+            design lab / '26
+          </div>
+          <div className="mt-2 flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
+            <span className="relative inline-flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-pink opacity-70" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-pink" />
+            </span>
+            status: available for new projects
+          </div>
+
+          <h2 className="mt-10 font-extrabold uppercase leading-[0.88] tracking-[-0.045em] text-foreground text-[clamp(3.2rem,12vw,10.5rem)]">
+            <span className="block">Let's build</span>
+            <span className="block">something</span>
+            <span
+              className="block text-transparent"
+              style={{
+                WebkitTextStroke: "1.5px oklch(1 0 0 / 22%)",
+              }}
+            >
+              unreasonable
+            </span>
           </h2>
         </Reveal>
+
 
         <div className="mt-12 grid gap-4 lg:grid-cols-[1fr_1.2fr]">
           <Reveal>
