@@ -26,16 +26,21 @@ export function Contact() {
     <section id="contact" className="relative overflow-hidden border-t border-border px-6 pb-16 pt-24">
       <div className="mx-auto max-w-7xl">
         <Reveal>
-          <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-            design lab / '26
+          <div className="flex items-center gap-3 font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-muted-foreground">
+            <span className="inline-flex h-6 items-center rounded-sm border border-brand-pink/70 px-2 text-brand-pink">
+              04
+            </span>
+            <span className="h-px w-6 bg-border" />
+            <span>Contact — let's make something</span>
           </div>
-          <div className="mt-2 flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
+          <div className="mt-4 flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
             <span className="relative inline-flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-pink opacity-70" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-pink" />
             </span>
             status: available for new projects
           </div>
+
 
           <h2 className="mt-10 font-extrabold uppercase leading-[0.88] tracking-[-0.045em] text-foreground text-[clamp(3.2rem,12vw,10.5rem)]">
             <span className="block">Let's build</span>

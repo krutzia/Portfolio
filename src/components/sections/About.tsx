@@ -11,7 +11,7 @@ const cards = [
   {
     Icon: Lightbulb,
     title: "Problem Solving",
-    body: "600+ DSA problems on LeetCode. Daily reps in algorithms, data structures, and system design — built for real engineering bars.",
+    body: "500+ DSA problems on LeetCode. Daily reps in algorithms, data structures, and system design — built for real engineering bars.",
   },
   {
     Icon: Layers,
