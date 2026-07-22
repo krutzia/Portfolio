@@ -81,9 +81,9 @@ export function Hero() {
             variants={item}
             className="mt-6 max-w-xl text-[15px] leading-relaxed text-muted-foreground"
           >
-            I'm <span className="text-foreground">Kashish</span> — final-year CS student
-            crafting production-grade web products with React, Node, and TypeScript. Focused
-            on performance, accessibility, and clean architecture.
+            I'm <span className="text-foreground">Kashish</span> — I build unreasonably good
+            websites. Making <span className="text-foreground">"what if?"</span> feel inevitable —
+            that refuse to look like everyone else.
           </motion.p>
 
 
