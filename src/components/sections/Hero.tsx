@@ -64,9 +64,9 @@ export function Hero() {
             variants={item}
             className="mt-10 text-[clamp(4rem,13vw,10rem)] font-extrabold leading-[0.9] tracking-[-0.045em] text-foreground"
           >
-            STAY
+            Hi, I'm
             <br />
-            <span className="text-brand-pink">CURIOUS.</span>
+            <span className="text-brand-pink">Kashish</span>
           </motion.h1>
 
           <motion.p
