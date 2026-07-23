@@ -130,6 +130,24 @@ html { color-scheme: dark; }
   }
 }
 
+@keyframes hero-laser {
+  0% { transform: translate3d(-50%, -20vh, 0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translate3d(-50%, 110vh, 0); opacity: 0; }
+}
+@layer utilities {
+  .hero-laser-beam {
+    background: linear-gradient(to bottom, transparent, oklch(1 0 0 / 0.55) 40%, oklch(0.85 0.12 210 / 0.7) 60%, transparent);
+    filter: blur(24px);
+    opacity: 0.7;
+    animation: hero-laser 8s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-laser-beam { animation: none; display: none; }
+  }
+
+
 @media (hover: hover) and (pointer: fine) {
   html.cursor-none-root,
   html.cursor-none-root *,

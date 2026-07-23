@@ -38,12 +38,34 @@ export function Hero() {
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10"
+        style={{ backgroundColor: "#0B0B0F" }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, oklch(1 0 0 / 0.06) 1px, transparent 1px), linear-gradient(to bottom, oklch(1 0 0 / 0.06) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10"
         style={{
           background:
             "radial-gradient(70% 50% at 30% 0%, oklch(0.55 0.08 240 / 0.10), transparent 70%)",
         }}
       />
-      <div className="pointer-events-none absolute inset-0 -z-10 dot-bg [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
+      {!isMinimal && (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -z-10 overflow-hidden motion-reduce:hidden"
+        >
+          <div className="hero-laser-beam absolute left-1/2 top-0 h-40 w-[3px] -translate-x-1/2 will-change-transform" />
+        </div>
+      )}
+
 
       <motion.div
         variants={container}
@@ -62,7 +84,7 @@ export function Hero() {
 
           <motion.h1
             variants={item}
-            className="mt-10 text-[clamp(4rem,13vw,10rem)] font-extrabold leading-[0.9] tracking-[-0.045em] text-foreground"
+            className="mt-10 text-[clamp(3rem,9.5vw,7.5rem)] font-extrabold leading-[0.9] tracking-[-0.045em] text-foreground"
           >
             Hi, I'm
             <br />
@@ -81,8 +103,6 @@ export function Hero() {
             variants={item}
             className="mt-6 max-w-xl text-[15px] leading-relaxed text-muted-foreground"
           >
-            Hi, I'm <span className="text-foreground">Kashish.</span>
-            <br />
             I turn <span className="text-foreground">"what if?"</span> into products
             <br />
             that refuse to blend in.
@@ -92,6 +112,7 @@ export function Hero() {
             <br />
             AI-powered products from idea to deployment.
           </motion.p>
+
 
 
           <motion.div
