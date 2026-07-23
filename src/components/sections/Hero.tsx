@@ -64,9 +64,9 @@ export function Hero() {
             variants={item}
             className="mt-10 text-[clamp(4rem,13vw,10rem)] font-extrabold leading-[0.9] tracking-[-0.045em] text-foreground"
           >
-            STAY
+            Hi, I'm
             <br />
-            <span className="text-brand-pink">CURIOUS.</span>
+            <span className="text-brand-pink">Kashish</span>
           </motion.h1>
 
           <motion.p
@@ -81,9 +81,16 @@ export function Hero() {
             variants={item}
             className="mt-6 max-w-xl text-[15px] leading-relaxed text-muted-foreground"
           >
-            I'm <span className="text-foreground">Kashish</span> — I build unreasonably good
-            websites. Making <span className="text-foreground">"what if?"</span> feel inevitable —
-            that refuse to look like everyone else.
+            Hi, I'm <span className="text-foreground">Kashish.</span>
+            <br />
+            I turn <span className="text-foreground">"what if?"</span> into products
+            <br />
+            that refuse to blend in.
+            <br />
+            <br />
+            Full-stack developer building thoughtful,
+            <br />
+            AI-powered products from idea to deployment.
           </motion.p>
 
 
