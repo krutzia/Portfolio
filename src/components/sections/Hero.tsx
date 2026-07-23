@@ -84,7 +84,7 @@ export function Hero() {
 
           <motion.h1
             variants={item}
-            className="mt-10 text-[clamp(4rem,13vw,10rem)] font-extrabold leading-[0.9] tracking-[-0.045em] text-foreground"
+            className="mt-10 text-[clamp(3rem,9.5vw,7.5rem)] font-extrabold leading-[0.9] tracking-[-0.045em] text-foreground"
           >
             Hi, I'm
             <br />
@@ -103,8 +103,6 @@ export function Hero() {
             variants={item}
             className="mt-6 max-w-xl text-[15px] leading-relaxed text-muted-foreground"
           >
-            Hi, I'm <span className="text-foreground">Kashish.</span>
-            <br />
             I turn <span className="text-foreground">"what if?"</span> into products
             <br />
             that refuse to blend in.
@@ -114,6 +112,7 @@ export function Hero() {
             <br />
             AI-powered products from idea to deployment.
           </motion.p>
+
 
 
           <motion.div
