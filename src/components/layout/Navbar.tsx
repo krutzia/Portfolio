@@ -84,7 +84,7 @@ export function Navbar() {
                   key={item.id}
                   onClick={() => scrollTo(item.id)}
                   className={
-                    "relative rounded-md px-3 py-1.5 text-sm transition-colors " +
+                    "relative rounded-md px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.22em] transition-colors " +
                     (isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground")
                   }
                 >
