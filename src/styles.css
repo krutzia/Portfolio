@@ -152,14 +152,15 @@ html { color-scheme: dark; }
     background: linear-gradient(
       to bottom,
       transparent 0%,
-      rgba(255, 84, 156, 0.18) 20%,
-      rgba(255, 122, 182, 0.45) 45%,
-      rgba(255, 255, 255, 0.9) 50%,
-      rgba(255, 122, 182, 0.45) 55%,
-      rgba(255, 84, 156, 0.18) 80%,
+      rgba(255, 84, 156, 0.35) 20%,
+      rgba(255, 122, 182, 0.7) 45%,
+      rgba(255, 255, 255, 1) 50%,
+      rgba(255, 122, 182, 0.7) 55%,
+      rgba(255, 84, 156, 0.35) 80%,
       transparent 100%
     );
-    filter: blur(6px);
+    filter: blur(8px) drop-shadow(0 0 24px rgba(255, 84, 156, 0.55));
+    opacity: 0.95;
     animation: global-beam 8s ease-in-out infinite;
   }
 }
