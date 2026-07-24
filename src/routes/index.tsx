@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { AnimationModeProvider } from "@/context/AnimationModeContext";
 import { Navbar } from "@/components/layout/Navbar";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
+import { GlobalBackground } from "@/components/layout/GlobalBackground";
 
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
