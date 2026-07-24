@@ -170,8 +170,7 @@ html { color-scheme: dark; }
   85% { opacity: 1; }
   100% { transform: translate3d(-50%, 110vh, 0); opacity: 0; }
 }
-
-
+@layer utilities {
   @media (hover: hover) and (pointer: fine) {
     html.cursor-none-root,
     html.cursor-none-root *,
