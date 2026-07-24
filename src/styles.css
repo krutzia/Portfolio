@@ -148,12 +148,14 @@ html { color-scheme: dark; }
   }
 
 
-@media (hover: hover) and (pointer: fine) {
-  html.cursor-none-root,
-  html.cursor-none-root *,
-  html.cursor-none-root a,
-  html.cursor-none-root button {
-    cursor: none !important;
+  @media (hover: hover) and (pointer: fine) {
+    html.cursor-none-root,
+    html.cursor-none-root *,
+    html.cursor-none-root a,
+    html.cursor-none-root button {
+      cursor: none !important;
+    }
   }
 }
+
 
