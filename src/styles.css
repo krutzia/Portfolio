@@ -145,7 +145,31 @@ html { color-scheme: dark; }
   }
   @media (prefers-reduced-motion: reduce) {
     .hero-laser-beam { animation: none; display: none; }
+    .global-light-beam { animation: none; display: none; }
   }
+
+  .global-light-beam {
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(255, 84, 156, 0.18) 20%,
+      rgba(255, 122, 182, 0.45) 45%,
+      rgba(255, 255, 255, 0.9) 50%,
+      rgba(255, 122, 182, 0.45) 55%,
+      rgba(255, 84, 156, 0.18) 80%,
+      transparent 100%
+    );
+    filter: blur(6px);
+    animation: global-beam 8s ease-in-out infinite;
+  }
+}
+
+@keyframes global-beam {
+  0% { transform: translate3d(-50%, -20vh, 0); opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { transform: translate3d(-50%, 110vh, 0); opacity: 0; }
+}
 
 
   @media (hover: hover) and (pointer: fine) {
