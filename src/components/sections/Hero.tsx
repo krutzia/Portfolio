@@ -107,7 +107,6 @@ export function Hero() {
             <br />
             that refuse to blend in.
             <br />
-            <br />
             Full-stack developer building thoughtful,
             <br />
             AI-powered products from idea to deployment.

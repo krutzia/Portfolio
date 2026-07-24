@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { AnimationModeProvider } from "@/context/AnimationModeContext";
 import { Navbar } from "@/components/layout/Navbar";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
+import { GlobalBackground } from "@/components/layout/GlobalBackground";
 
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
@@ -37,7 +38,8 @@ function Home() {
   return (
     <AnimationModeProvider>
       <div className="relative min-h-screen bg-background text-foreground">
-        <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 grid-bg opacity-70" />
+        <GlobalBackground />
+
         <ScrollProgress />
 
 
