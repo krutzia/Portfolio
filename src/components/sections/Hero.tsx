@@ -193,20 +193,21 @@ export function Hero() {
               className="absolute inset-0 h-full w-full select-none object-cover object-top"
               style={{
                 WebkitMaskImage:
-                  "radial-gradient(72% 82% at 50% 42%, #000 52%, rgba(0,0,0,0.55) 78%, transparent 100%)",
+                  "radial-gradient(58% 68% at 50% 42%, #000 30%, rgba(0,0,0,0.85) 55%, rgba(0,0,0,0.35) 78%, transparent 100%)",
                 maskImage:
-                  "radial-gradient(72% 82% at 50% 42%, #000 52%, rgba(0,0,0,0.55) 78%, transparent 100%)",
+                  "radial-gradient(58% 68% at 50% 42%, #000 30%, rgba(0,0,0,0.85) 55%, rgba(0,0,0,0.35) 78%, transparent 100%)",
               }}
             />
-            {/* Vignette + edge fades into page background */}
+            {/* Full edge feather — fade into background on all sides */}
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(to bottom, transparent 55%, var(--background) 100%), linear-gradient(to right, var(--background) 0%, transparent 14%, transparent 86%, var(--background) 100%)",
+                  "linear-gradient(to bottom, var(--background) 0%, transparent 22%, transparent 62%, var(--background) 100%), linear-gradient(to right, var(--background) 0%, transparent 22%, transparent 78%, var(--background) 100%)",
               }}
             />
+
             {/* Frameless caption */}
             <div className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 text-[10px] font-mono uppercase tracking-[0.35em] text-muted-foreground/70">
               @krutzia · noida
