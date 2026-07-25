@@ -162,6 +162,27 @@ html { color-scheme: dark; }
     filter: blur(6px);
     animation: global-beam 8s ease-in-out infinite;
   }
+
+  .global-horizontal-beam {
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(255, 84, 156, 0.15) 20%,
+      rgba(255, 122, 182, 0.55) 45%,
+      rgba(255, 255, 255, 0.85) 50%,
+      rgba(255, 122, 182, 0.55) 55%,
+      rgba(255, 84, 156, 0.15) 80%,
+      transparent 100%
+    );
+    box-shadow:
+      0 0 24px rgba(255, 84, 156, 0.55),
+      0 0 60px rgba(255, 84, 156, 0.35);
+    filter: blur(1.5px);
+    animation: global-horizontal-beam 7s linear infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .global-horizontal-beam { animation: none; display: none; }
+  }
 }
 
 @keyframes global-beam {
@@ -170,6 +191,14 @@ html { color-scheme: dark; }
   85% { opacity: 1; }
   100% { transform: translate3d(-50%, 110vh, 0); opacity: 0; }
 }
+
+@keyframes global-horizontal-beam {
+  0% { transform: translate3d(0, -5vh, 0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translate3d(0, 105vh, 0); opacity: 0; }
+}
+
 @layer utilities {
   @media (hover: hover) and (pointer: fine) {
     html.cursor-none-root,
