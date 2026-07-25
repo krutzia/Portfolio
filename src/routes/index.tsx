@@ -37,7 +37,7 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <AnimationModeProvider>
-      <div className="relative min-h-screen text-foreground">
+      <div className="relative min-h-screen bg-background text-foreground">
         <GlobalBackground />
 
         <ScrollProgress />
