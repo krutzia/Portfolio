@@ -2,12 +2,12 @@ export function GlobalBackground() {
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
       <div className="absolute inset-0" style={{ backgroundColor: "#0B0B0F" }} />
-      {/* Brighter grid — closer to reference */}
+      {/* Subtle grid — faint texture */}
       <div
         className="absolute inset-0"
         style={{
           backgroundImage:
-            "linear-gradient(to right, rgba(255,255,255,0.11) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.11) 1px, transparent 1px)",
+            "linear-gradient(to right, rgba(255,255,255,0.065) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.065) 1px, transparent 1px)",
           backgroundSize: "56px 56px",
         }}
       />
@@ -16,10 +16,11 @@ export function GlobalBackground() {
         className="absolute inset-0"
         style={{
           backgroundImage:
-            "linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px)",
+            "linear-gradient(to right, rgba(255,255,255,0.024) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.024) 1px, transparent 1px)",
           backgroundSize: "14px 14px",
         }}
       />
+
       {/* Soft pink vignette to warm the scene */}
       <div
         className="absolute inset-0"
