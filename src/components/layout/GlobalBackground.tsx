@@ -10,7 +10,16 @@ export function GlobalBackground() {
           backgroundSize: "48px 48px",
         }}
       />
-      <div className="global-light-beam absolute left-1/2 top-0 h-48 w-[3px] -translate-x-1/2 will-change-transform motion-reduce:hidden" />
+      {/* Soft radial vignette to add depth */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(60% 50% at 50% 40%, rgba(255,84,156,0.08), transparent 70%)",
+        }}
+      />
+      {/* Horizontal pink beam traveling top → bottom */}
+      <div className="global-horizontal-beam absolute left-0 right-0 top-0 h-[2px] will-change-transform motion-reduce:hidden" />
     </div>
   );
 }
