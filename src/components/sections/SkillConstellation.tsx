@@ -10,7 +10,6 @@ import {
   SiExpress,
   SiPhp,
   SiPostman,
-  SiOpenai,
   SiClaude,
   SiHuggingface,
   SiMongodb,
@@ -29,6 +28,7 @@ import {
   SiHtml5,
 } from "react-icons/si";
 import { FaAws, FaDatabase, FaCode } from "react-icons/fa";
+import { TbBrandOpenai } from "react-icons/tb";
 import { Reveal } from "@/components/fx/Reveal";
 import { SectionLabel } from "@/components/sections/About";
 import { skillCategories } from "@/config/portfolio";
@@ -48,9 +48,9 @@ const SKILL_ICON: Record<string, Brand> = {
   PHP: { icon: SiPhp, color: "#777BB4" },
   "REST APIs": { icon: SiPostman, color: "#FF6C37" },
 
-  "OpenAI API": { icon: SiOpenai, color: "#FFFFFF" },
+  "OpenAI API": { icon: TbBrandOpenai, color: "#FFFFFF" },
   "Claude API": { icon: SiClaude, color: "#D97757" },
-  "Prompt Engineering": { icon: SiOpenai, color: "#A78BFA" },
+  "Prompt Engineering": { icon: TbBrandOpenai, color: "#A78BFA" },
   Embeddings: { icon: SiHuggingface, color: "#FFD21E" },
 
   MongoDB: { icon: SiMongodb, color: "#47A248" },
