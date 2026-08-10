@@ -63,7 +63,7 @@ export function Projects() {
               Products I've shipped end to end.
             </h2>
             <p className="max-w-sm text-sm text-muted-foreground">
-              Six production projects across AI tooling, full-stack apps, and developer
+              Eight production projects across AI tooling, full-stack apps, and developer
               experience.
             </p>
           </div>
