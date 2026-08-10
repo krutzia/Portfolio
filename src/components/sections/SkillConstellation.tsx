@@ -1,23 +1,76 @@
+import type { IconType } from "react-icons";
 import {
-  Atom,
-  Server,
-  Sparkles,
-  Database,
-  Wrench,
-  Code2,
-  type LucideIcon,
-} from "lucide-react";
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiTailwindcss,
+  SiAngular,
+  SiFigma,
+  SiNodedotjs,
+  SiExpress,
+  SiPhp,
+  SiPostman,
+  SiOpenai,
+  SiClaude,
+  SiHuggingface,
+  SiMongodb,
+  SiPostgresql,
+  SiMysql,
+  SiSupabase,
+  SiGithub,
+  SiDocker,
+  SiLinux,
+  SiNetlify,
+  SiRender,
+  SiCplusplus,
+  SiOpenjdk,
+  SiPython,
+  SiJavascript,
+  SiHtml5,
+} from "react-icons/si";
+import { FaAws, FaDatabase, FaCode } from "react-icons/fa";
 import { Reveal } from "@/components/fx/Reveal";
 import { SectionLabel } from "@/components/sections/About";
 import { skillCategories } from "@/config/portfolio";
 
-const CATEGORY_ICON: Record<string, LucideIcon> = {
-  Frontend: Atom,
-  Backend: Server,
-  "AI & LLM": Sparkles,
-  Databases: Database,
-  "Developer Tools": Wrench,
-  Languages: Code2,
+type Brand = { icon: IconType; color: string };
+
+const SKILL_ICON: Record<string, Brand> = {
+  "React.js": { icon: SiReact, color: "#61DAFB" },
+  "Next.js": { icon: SiNextdotjs, color: "#FFFFFF" },
+  TypeScript: { icon: SiTypescript, color: "#3178C6" },
+  "Tailwind CSS": { icon: SiTailwindcss, color: "#38BDF8" },
+  AngularJS: { icon: SiAngular, color: "#DD0031" },
+  Figma: { icon: SiFigma, color: "#F24E1E" },
+
+  "Node.js": { icon: SiNodedotjs, color: "#5FA04E" },
+  "Express.js": { icon: SiExpress, color: "#EDEDED" },
+  PHP: { icon: SiPhp, color: "#777BB4" },
+  "REST APIs": { icon: SiPostman, color: "#FF6C37" },
+
+  "OpenAI API": { icon: SiOpenai, color: "#FFFFFF" },
+  "Claude API": { icon: SiClaude, color: "#D97757" },
+  "Prompt Engineering": { icon: SiOpenai, color: "#A78BFA" },
+  Embeddings: { icon: SiHuggingface, color: "#FFD21E" },
+
+  MongoDB: { icon: SiMongodb, color: "#47A248" },
+  PostgreSQL: { icon: SiPostgresql, color: "#4169E1" },
+  MySQL: { icon: SiMysql, color: "#00758F" },
+  Supabase: { icon: SiSupabase, color: "#3ECF8E" },
+
+  "Git / GitHub": { icon: SiGithub, color: "#FFFFFF" },
+  Docker: { icon: SiDocker, color: "#2496ED" },
+  Linux: { icon: SiLinux, color: "#FCC624" },
+  AWS: { icon: FaAws, color: "#FF9900" },
+  Netlify: { icon: SiNetlify, color: "#00C7B7" },
+  Render: { icon: SiRender, color: "#FFFFFF" },
+
+  "C / C++": { icon: SiCplusplus, color: "#00599C" },
+  Java: { icon: SiOpenjdk, color: "#F89820" },
+  Python: { icon: SiPython, color: "#3776AB" },
+  JavaScript: { icon: SiJavascript, color: "#F7DF1E" },
+  SQL: { icon: FaDatabase, color: "#9CA3AF" },
+  "HTML / CSS": { icon: SiHtml5, color: "#E34F26" },
 };
 
 export function SkillConstellation() {
@@ -37,32 +90,34 @@ export function SkillConstellation() {
         </Reveal>
 
         <div className="mt-12 space-y-10">
-          {skillCategories.map((c, ci) => {
-            const Icon = CATEGORY_ICON[c.name] ?? Code2;
-            return (
-              <Reveal key={c.name} delay={0.03 * ci}>
-                <div>
-                  <div className="mb-4 flex items-baseline justify-between">
-                    <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-                      <span className="h-1.5 w-1.5 rounded-full bg-brand-pink" />
-                      {c.name}
-                    </div>
-                    <span className="font-mono text-[10px] tabular-nums text-muted-foreground/70">
-                      {String(c.skills.length).padStart(2, "0")} skills
-                    </span>
+          {skillCategories.map((c, ci) => (
+            <Reveal key={c.name} delay={0.03 * ci}>
+              <div>
+                <div className="mb-4 flex items-baseline justify-between">
+                  <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+                    <span className="h-1.5 w-1.5 rounded-full bg-brand-pink" />
+                    {c.name}
                   </div>
+                  <span className="font-mono text-[10px] tabular-nums text-muted-foreground/70">
+                    {String(c.skills.length).padStart(2, "0")} skills
+                  </span>
+                </div>
 
-                  <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-                    {c.skills.map((s) => (
+                <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+                  {c.skills.map((s) => {
+                    const brand = SKILL_ICON[s.name] ?? { icon: FaCode, color: "#9CA3AF" };
+                    const Icon = brand.icon;
+                    return (
                       <div
                         key={s.name}
                         className="group relative flex flex-col items-center justify-center gap-3 rounded-xl border border-border bg-card p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-pink/50 hover:shadow-[0_10px_30px_-15px_oklch(0.72_0.31_350_/_0.35)]"
                       >
-                        <div
-                          className="grid h-11 w-11 place-items-center rounded-lg border border-border bg-background/60 transition-colors group-hover:border-brand-pink/40"
-                          style={{ color: c.accent }}
-                        >
-                          <Icon className="h-5 w-5" />
+                        <div className="grid h-11 w-11 place-items-center rounded-lg border border-border bg-background/60 transition-colors group-hover:border-brand-pink/40">
+                          <Icon
+                            className="h-5 w-5 transition-transform duration-300 group-hover:scale-110"
+                            style={{ color: brand.color }}
+                            aria-hidden
+                          />
                         </div>
                         <div className="text-center text-[13px] font-medium text-foreground">
                           {s.name}
@@ -74,12 +129,12 @@ export function SkillConstellation() {
                           />
                         </div>
                       </div>
-                    ))}
-                  </div>
+                    );
+                  })}
                 </div>
-              </Reveal>
-            );
-          })}
+              </div>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
