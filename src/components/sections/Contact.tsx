@@ -116,7 +116,6 @@ export function Contact() {
 
         <div className="mt-16 flex flex-col items-center justify-between gap-3 border-t border-border pt-8 text-xs text-muted-foreground sm:flex-row">
           <p>© {new Date().getFullYear()} Kashish.</p>
-          <p>Built with React, TypeScript & Framer Motion.</p>
         </div>
       </div>
     </section>

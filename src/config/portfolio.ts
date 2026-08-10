@@ -113,6 +113,13 @@ export const skillCategories: SkillCategory[] = [
 ];
 
 
+import shotNomad from "@/assets/shot-9.png.asset.json";
+import shotMedi from "@/assets/shot-10.png.asset.json";
+import shotSilo from "@/assets/shot-11.png.asset.json";
+import shotSmartLecture from "@/assets/shot-12.png.asset.json";
+import shotResuMatch from "@/assets/shot-13.png.asset.json";
+import shotCodeInsight from "@/assets/shot-14.png.asset.json";
+
 export type Project = {
   name: string;
   tagline: string;
@@ -123,9 +130,61 @@ export type Project = {
   githubUrl?: string;
   accent: string;
   mockup: "resumatch" | "fittrack" | "silo" | "generic";
+  image?: string;
 };
 
 export const projects: Project[] = [
+  {
+    name: "MediCompare",
+    tagline: "Compare medical test prices across hospitals",
+    description:
+      "AI-powered price intelligence for healthcare — compare MRI scans, blood tests, and consultations across verified hospitals with transparent pricing and real availability.",
+    highlights: [
+      "Rich comparison UI with search, filters, and savings insights",
+      "TypeScript-first architecture with reusable component primitives",
+      "Deployed on Vercel with fast, mobile-first performance",
+    ],
+    tech: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
+    liveUrl: "https://medi-compare-theta.vercel.app",
+    githubUrl: "https://github.com/krutzia/MediCompare",
+    accent: "var(--cosmos-emerald)",
+    mockup: "generic",
+    image: shotMedi.url,
+  },
+  {
+    name: "Nomad",
+    tagline: "Collaborative trip planner for crews",
+    description:
+      "Trip planning app that turns a single draggable route into day-by-day itineraries, budgets, packing lists, and real-time companions — keeping every adventurer on the same page.",
+    highlights: [
+      "Draggable route builder with day-by-day itinerary generation",
+      "Real-time collaboration, budgets, and shared packing lists",
+      "Works offline and shareable with anyone — no credit card needed",
+    ],
+    tech: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
+    liveUrl: "https://nomad-fawn-tau.vercel.app",
+    githubUrl: "https://github.com/krutzia/Nomad",
+    accent: "var(--cosmos-emerald)",
+    mockup: "generic",
+    image: shotNomad.url,
+  },
+  {
+    name: "ResuMatch",
+    tagline: "AI-powered resume analysis & ATS scoring",
+    description:
+      "Analyzes resumes against job descriptions, generates ATS match scores, identifies missing skills, and suggests optimized improvements.",
+    highlights: [
+      "Resume upload & parsing with Supabase Storage + Auth",
+      "AI-driven optimization via Edge Functions and external AI APIs",
+      "Personalized dashboards with filtering and job recommendations",
+    ],
+    tech: ["React", "TypeScript", "Supabase", "Tailwind CSS", "Framer Motion"],
+    liveUrl: "https://ai-powered-resume-and-jobmatcher.vercel.app/",
+    githubUrl: "https://github.com/krutzia/ai-powered-resume-and-jobmatcher",
+    accent: "var(--cosmos-violet)",
+    mockup: "resumatch",
+    image: shotResuMatch.url,
+  },
   {
     name: "CampusKart",
     tagline: "AI-powered marketplace for students",
@@ -146,9 +205,9 @@ export const projects: Project[] = [
     name: "CodeInsight",
     tagline: "AI code review & optimization platform",
     description:
-      "AI-powered code analysis platform that reviews source code, flags issues, and returns intelligent optimization and debugging suggestions.",
+      "AI-powered code analysis platform that reviews source code, flags issues, and returns intelligent optimization, debugging suggestions, and a quality score.",
     highlights: [
-      "OpenAI + prompt engineering for code explanations and fixes",
+      "Before/after diffs with line-by-line AI suggestions",
       "Developer-focused UX with secure auth and scalable REST services",
       "Built with React, TypeScript, Tailwind — deployed on Vercel",
     ],
@@ -157,38 +216,41 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/krutzia/CodeInsight",
     accent: "var(--cosmos-cyan)",
     mockup: "generic",
+    image: shotCodeInsight.url,
   },
   {
-    name: "ResuMatch",
-    tagline: "AI-powered resume analysis & ATS scoring",
+    name: "SmartLecture AI",
+    tagline: "Turn lectures into study superpowers",
     description:
-      "Analyzes resumes against job descriptions, generates ATS match scores, identifies missing skills, and suggests optimized improvements.",
+      "Upload any lecture and get instant transcripts, smart summaries, flashcards, and a study buddy chatbot — all in one cozy workspace.",
     highlights: [
-      "Resume upload & parsing with Supabase Storage + Auth",
-      "AI-driven optimization via Edge Functions and external AI APIs",
-      "Personalized dashboards with filtering and job recommendations",
+      "Audio transcription with AI-generated summaries and flashcards",
+      "Study buddy chatbot grounded in your own lecture content",
+      "Playful, responsive UI deployed on Vercel",
     ],
-    tech: ["React", "TypeScript", "Supabase", "Tailwind CSS", "Framer Motion"],
-    liveUrl: "https://ai-powered-resume-and-jobmatcher.vercel.app/",
-    githubUrl: "https://github.com/krutzia/ai-powered-resume-and-jobmatcher",
-    accent: "var(--cosmos-violet)",
-    mockup: "resumatch",
-  },
-  {
-    name: "MediCompare",
-    tagline: "Compare medicines, prices & alternatives",
-    description:
-      "A responsive web app that helps users compare medicines, discover generic alternatives, and make informed choices with a clean, data-dense interface.",
-    highlights: [
-      "Rich comparison UI with filters, search, and detail views",
-      "TypeScript-first architecture with reusable component primitives",
-      "Deployed on Vercel with fast, mobile-first performance",
-    ],
-    tech: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
-    liveUrl: "https://medi-compare-theta.vercel.app",
-    githubUrl: "https://github.com/krutzia/MediCompare",
-    accent: "var(--cosmos-emerald)",
+    tech: ["React", "TypeScript", "AI APIs", "Tailwind CSS"],
+    liveUrl: "https://smart-lecture-git-main-krutzias-projects.vercel.app",
+    githubUrl: "https://github.com/krutzia/SmartLecture-AI",
+    accent: "var(--cosmos-amber)",
     mockup: "generic",
+    image: shotSmartLecture.url,
+  },
+  {
+    name: "Silo Study AI",
+    tagline: "AI-powered study assistant",
+    description:
+      "Creates personalized study plans that adapt to your progress, keeps you accountable with friends, and helps you crush every exam.",
+    highlights: [
+      "AI-based study planning and intelligent content assistance",
+      "Responsive modern UI for cross-device experience",
+      "Backend APIs, database integration, and deployment workflows",
+    ],
+    tech: ["React", "Node.js", "AI APIs", "Tailwind CSS"],
+    liveUrl: "https://silo-study-j0u6igfpu-krutzias-projects.vercel.app/",
+    githubUrl: "https://github.com/krutzia/Silo-study-ai",
+    accent: "var(--cosmos-pink)",
+    mockup: "silo",
+    image: shotSilo.url,
   },
   {
     name: "FitTrack",
@@ -205,22 +267,6 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/krutzia/FitTrack",
     accent: "var(--cosmos-cyan)",
     mockup: "fittrack",
-  },
-  {
-    name: "Silo Study AI",
-    tagline: "AI-powered study assistant",
-    description:
-      "Helps students organize learning resources and improve study efficiency with intelligent content assistance.",
-    highlights: [
-      "AI-based study support and intelligent content assistance",
-      "Responsive modern UI for cross-device experience",
-      "Backend APIs, database integration, and deployment workflows",
-    ],
-    tech: ["React", "Node.js", "AI APIs", "Tailwind CSS"],
-    liveUrl: "https://silo-study-j0u6igfpu-krutzias-projects.vercel.app/",
-    githubUrl: "https://github.com/krutzia/Silo-study-ai",
-    accent: "var(--cosmos-pink)",
-    mockup: "silo",
   },
 ];
 
