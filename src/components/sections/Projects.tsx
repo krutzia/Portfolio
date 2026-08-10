@@ -234,16 +234,27 @@ function ProjectRow({
 
   const Preview = (
     <BrowserFrame host={hostOf(project.liveUrl)} disableHover={isMinimal}>
-      {project.mockup === "resumatch" && <ResuMatchMockup />}
-      {project.mockup === "fittrack" && <FitTrackMockup />}
-      {project.mockup === "silo" && <SiloMockup />}
-      {project.mockup === "generic" && (
-        <GenericMockup
-          title={project.name}
-          tag={project.tagline}
-          tech={project.tech}
-          accent={project.accent}
+      {project.image ? (
+        <img
+          src={project.image}
+          alt={`${project.name} — ${project.tagline} screenshot`}
+          loading="lazy"
+          className="h-full w-full object-cover object-top"
         />
+      ) : (
+        <>
+          {project.mockup === "resumatch" && <ResuMatchMockup />}
+          {project.mockup === "fittrack" && <FitTrackMockup />}
+          {project.mockup === "silo" && <SiloMockup />}
+          {project.mockup === "generic" && (
+            <GenericMockup
+              title={project.name}
+              tag={project.tagline}
+              tech={project.tech}
+              accent={project.accent}
+            />
+          )}
+        </>
       )}
     </BrowserFrame>
   );
