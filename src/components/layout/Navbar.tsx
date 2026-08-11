@@ -180,6 +180,7 @@ export function Navbar() {
               ))}
               <a
                 href="/resume.pdf"
+                download="Kashish-Resume.pdf"
                 target="_blank"
                 rel="noreferrer"
                 className="mt-1 block rounded-md px-3 py-2.5 text-sm text-foreground hover:bg-secondary"
