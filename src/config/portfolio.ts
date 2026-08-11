@@ -119,6 +119,8 @@ import shotSilo from "@/assets/shot-11.png.asset.json";
 import shotSmartLecture from "@/assets/shot-12.png.asset.json";
 import shotResuMatch from "@/assets/shot-13.png.asset.json";
 import shotCodeInsight from "@/assets/shot-14.png.asset.json";
+import shotCampusKart from "@/assets/shot-15.png.asset.json";
+import shotFitTrack from "@/assets/shot-16.png.asset.json";
 
 export type Project = {
   name: string;
