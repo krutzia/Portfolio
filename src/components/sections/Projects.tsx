@@ -235,14 +235,16 @@ function ProjectRow({
   const Preview = (
     <BrowserFrame host={hostOf(project.liveUrl)} disableHover={isMinimal}>
       {project.image ? (
-        <img
-          src={project.image}
-          alt={`${project.name} — ${project.tagline} screenshot`}
-          loading="lazy"
-          className="h-full w-full object-cover object-top"
-        />
+        <div className="relative bg-[oklch(0.13_0.005_260)]">
+          <img
+            src={project.image}
+            alt={`${project.name} — ${project.tagline} screenshot`}
+            loading="lazy"
+            className="block h-auto w-full"
+          />
+        </div>
       ) : (
-        <>
+        <div className="relative aspect-[4/3] bg-[oklch(0.13_0.005_260)]">
           {project.mockup === "resumatch" && <ResuMatchMockup />}
           {project.mockup === "fittrack" && <FitTrackMockup />}
           {project.mockup === "silo" && <SiloMockup />}
@@ -254,7 +256,7 @@ function ProjectRow({
               accent={project.accent}
             />
           )}
-        </>
+        </div>
       )}
     </BrowserFrame>
   );
