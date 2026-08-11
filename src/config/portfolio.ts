@@ -202,6 +202,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/krutzia/CampusKart",
     accent: "var(--cosmos-violet)",
     mockup: "generic",
+    image: shotCampusKart.url,
   },
   {
     name: "CodeInsight",
