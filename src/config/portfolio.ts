@@ -270,6 +270,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/krutzia/FitTrack",
     accent: "var(--cosmos-cyan)",
     mockup: "fittrack",
+    image: shotFitTrack.url,
   },
 ];
 
