@@ -125,6 +125,7 @@ export function Hero() {
           <motion.div variants={item} className="mt-8 flex flex-wrap items-center gap-3">
             <a
               href={profile.resumeUrl}
+              download="Kashish-Resume.pdf"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-md bg-foreground px-4 py-2.5 text-sm font-medium text-background transition-all hover:-translate-y-0.5 hover:opacity-90"
