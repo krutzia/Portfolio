@@ -299,17 +299,17 @@ function BrowserFrame({
     <motion.div
       whileHover={disableHover ? undefined : { scale: 1.015 }}
       transition={{ type: "spring", stiffness: 220, damping: 24 }}
-      className="relative aspect-[4/3] overflow-hidden rounded-lg border border-border bg-[oklch(0.13_0.005_260)] shadow-[0_30px_80px_-40px_rgba(0,0,0,0.7)]"
+      className="relative overflow-hidden rounded-xl border border-border bg-[oklch(0.13_0.005_260)] shadow-[0_30px_80px_-40px_rgba(0,0,0,0.7)]"
     >
-      <div className="flex items-center gap-1.5 border-b border-border bg-[oklch(0.16_0.005_260)] px-3 py-2">
-        <span className="h-2 w-2 rounded-full bg-muted-foreground/30" />
-        <span className="h-2 w-2 rounded-full bg-muted-foreground/30" />
-        <span className="h-2 w-2 rounded-full bg-muted-foreground/30" />
+      <div className="flex items-center gap-1.5 border-b border-border bg-[oklch(0.16_0.005_260)] px-3 py-2.5">
+        <span className="h-2.5 w-2.5 rounded-full bg-[oklch(0.62_0.2_25)]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[oklch(0.72_0.13_160)]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[oklch(0.72_0.31_350)]" />
         <span className="ml-3 truncate rounded bg-background/40 px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
           {host}
         </span>
       </div>
-      <div className="relative h-[calc(100%-29px)] overflow-hidden">{children}</div>
+      <div className="relative">{children}</div>
     </motion.div>
   );
 }
