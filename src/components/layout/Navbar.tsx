@@ -138,6 +138,7 @@ export function Navbar() {
 
           <a
             href="/resume.pdf"
+            download="Kashish-Resume.pdf"
             target="_blank"
             rel="noreferrer"
             className="hidden items-center gap-2 rounded-full border border-brand-pink/70 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-foreground transition-colors hover:bg-brand-pink/10 md:inline-flex"
