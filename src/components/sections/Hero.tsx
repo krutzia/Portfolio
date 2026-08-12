@@ -128,11 +128,13 @@ export function Hero() {
               download="Kashish-Resume.pdf"
               target="_blank"
               rel="noreferrer"
+              onClick={() => trackEvent("resume_download", { location: "hero" })}
               className="inline-flex items-center gap-2 rounded-md bg-foreground px-4 py-2.5 text-sm font-medium text-background transition-all hover:-translate-y-0.5 hover:opacity-90"
             >
               <Download className="h-4 w-4" />
               Download Resume
             </a>
+
             <button
               onClick={() => scrollTo("projects")}
               className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-4 py-2.5 text-sm font-medium text-foreground transition-all hover:-translate-y-0.5 hover:bg-secondary hover:border-[oklch(1_0_0_/_18%)]"
