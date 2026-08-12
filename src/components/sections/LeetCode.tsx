@@ -26,7 +26,7 @@ export function LeetCode() {
         <Reveal>
           <SectionLabel>Coding Journey</SectionLabel>
           <h2 className="mt-4 max-w-2xl text-3xl font-semibold leading-tight sm:text-4xl">
-            Reps over hype — 450+ problems and counting.
+            Reps over hype — 500+ problems and counting.
           </h2>
         </Reveal>
 
@@ -82,7 +82,7 @@ export function LeetCode() {
               <StatCard
                 Icon={Target}
                 title="Problems Solved"
-                value="450+"
+                value="500+"
                 sub="Arrays, DP, Graphs, Trees, system design fundamentals"
               />
               <StatCard

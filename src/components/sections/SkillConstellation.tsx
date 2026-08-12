@@ -98,9 +98,6 @@ export function SkillConstellation() {
                     <span className="h-1.5 w-1.5 rounded-full bg-brand-pink" />
                     {c.name}
                   </div>
-                  <span className="font-mono text-[10px] tabular-nums text-muted-foreground/70">
-                    {String(c.skills.length).padStart(2, "0")} skills
-                  </span>
                 </div>
 
                 <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
