@@ -21,7 +21,7 @@ const cards = [
   {
     Icon: Globe2,
     title: "Real-World Applications",
-    body: "Three production projects in live use — AI-augmented tools that solve concrete problems for real people.",
+    body: "Eight production projects in live use — tools that solve concrete problems for real people.",
   },
   {
     Icon: BookOpen,
