@@ -2,6 +2,8 @@ import { motion, type Variants } from "framer-motion";
 import { Download, Github, Linkedin, ArrowDown, MapPin } from "lucide-react";
 import { profile, socials } from "@/config/portfolio";
 import { useAnimationMode } from "@/context/AnimationModeContext";
+import { trackEvent } from "@/lib/analytics";
+
 
 export function Hero() {
   const { isMinimal, intensity } = useAnimationMode();
@@ -158,6 +160,7 @@ export function Hero() {
               target="_blank"
               rel="noreferrer"
               aria-label="GitHub"
+              onClick={() => trackEvent("github_click", { location: "hero" })}
               className="transition-colors hover:text-foreground"
             >
               <Github className="h-4 w-4" />
@@ -167,11 +170,13 @@ export function Hero() {
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
+              onClick={() => trackEvent("linkedin_click", { location: "hero" })}
               className="transition-colors hover:text-foreground"
             >
               <Linkedin className="h-4 w-4" />
             </a>
             <a
+
               href={socials.leetcode}
               target="_blank"
               rel="noreferrer"

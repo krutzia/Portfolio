@@ -4,6 +4,8 @@ import { Send, Github, Linkedin, Mail, MapPin, Check } from "lucide-react";
 import { Reveal } from "@/components/fx/Reveal";
 import { SectionLabel } from "@/components/sections/About";
 import { profile, socials } from "@/config/portfolio";
+import { trackEvent, type TrackEventName } from "@/lib/analytics";
+
 
 export function Contact() {
   const [sent, setSent] = useState(false);
@@ -67,13 +69,16 @@ export function Contact() {
                   label="GitHub"
                   value="github.com/krutzia"
                   href={socials.github}
+                  event="github_click"
                 />
                 <InfoRow
                   Icon={Linkedin}
                   label="LinkedIn"
                   value="linkedin.com/in/krutzia"
                   href={socials.linkedin}
+                  event="linkedin_click"
                 />
+
                 <InfoRow Icon={MapPin} label="Location" value={profile.location} />
               </div>
               <div className="mt-8 rounded-md border border-border bg-background/40 p-4 text-xs leading-relaxed text-muted-foreground">
@@ -127,11 +132,13 @@ function InfoRow({
   label,
   value,
   href,
+  event,
 }: {
   Icon: React.ComponentType<{ className?: string }>;
   label: string;
   value: string;
   href?: string;
+  event?: TrackEventName;
 }) {
   const inner = (
     <div className="group flex items-center gap-4 rounded-md p-2 transition-colors hover:bg-secondary/60">
@@ -145,13 +152,20 @@ function InfoRow({
     </div>
   );
   return href ? (
-    <a href={href} target="_blank" rel="noreferrer" className="block">
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      onClick={event ? () => trackEvent(event, { location: "contact" }) : undefined}
+      className="block"
+    >
       {inner}
     </a>
   ) : (
     inner
   );
 }
+
 
 function Field({
   name,
