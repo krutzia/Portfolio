@@ -124,6 +124,7 @@ import shotFitTrack from "@/assets/shot-16.png.asset.json";
 
 export type Project = {
   name: string;
+  category: string;
   tagline: string;
   description: string;
   highlights: string[];
@@ -138,6 +139,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     name: "MediCompare",
+    category: "Healthcare · Web App",
     tagline: "Compare medical test prices across hospitals",
     description:
       "AI-powered price intelligence for healthcare — compare MRI scans, blood tests, and consultations across verified hospitals with transparent pricing and real availability.",
@@ -155,6 +157,7 @@ export const projects: Project[] = [
   },
   {
     name: "Nomad",
+    category: "Travel · Web App",
     tagline: "Collaborative trip planner for crews",
     description:
       "Trip planning app that turns a single draggable route into day-by-day itineraries, budgets, packing lists, and real-time companions — keeping every adventurer on the same page.",
@@ -172,6 +175,7 @@ export const projects: Project[] = [
   },
   {
     name: "ResuMatch",
+    category: "Career · AI Tool",
     tagline: "AI-powered resume analysis & ATS scoring",
     description:
       "Analyzes resumes against job descriptions, generates ATS match scores, identifies missing skills, and suggests optimized improvements.",
@@ -189,6 +193,7 @@ export const projects: Project[] = [
   },
   {
     name: "CampusKart",
+    category: "Marketplace · Full Stack",
     tagline: "AI-powered marketplace for students",
     description:
       "Full-stack marketplace for college students to buy, sell, and discover study resources — with AI-generated listings, intelligent search, and personalized recommendations.",
@@ -206,6 +211,7 @@ export const projects: Project[] = [
   },
   {
     name: "CodeInsight",
+    category: "Developer · AI Tool",
     tagline: "AI code review & optimization platform",
     description:
       "AI-powered code analysis platform that reviews source code, flags issues, and returns intelligent optimization, debugging suggestions, and a quality score.",
@@ -223,6 +229,7 @@ export const projects: Project[] = [
   },
   {
     name: "SmartLecture AI",
+    category: "Edtech · AI Tool",
     tagline: "Turn lectures into study superpowers",
     description:
       "Upload any lecture and get instant transcripts, smart summaries, flashcards, and a study buddy chatbot — all in one cozy workspace.",
@@ -240,6 +247,7 @@ export const projects: Project[] = [
   },
   {
     name: "Silo Study AI",
+    category: "Edtech · AI Tool",
     tagline: "AI-powered study assistant",
     description:
       "Creates personalized study plans that adapt to your progress, keeps you accountable with friends, and helps you crush every exam.",
@@ -257,6 +265,7 @@ export const projects: Project[] = [
   },
   {
     name: "FitTrack",
+    category: "Fitness · Full Stack",
     tagline: "AI-powered fitness tracking platform",
     description:
       "Full-stack fitness web app to monitor workouts, progress, and health activities with a modern responsive UI.",

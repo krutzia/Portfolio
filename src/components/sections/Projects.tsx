@@ -24,13 +24,6 @@ function matches(filter: Filter, tech: string[]) {
   return true;
 }
 
-function categoryFor(tech: string[]) {
-  const s = tech.join(" ").toLowerCase();
-  if (/openai|claude|ai/.test(s)) return "AI · Full Stack";
-  if (/node|express|mongo|supabase/.test(s)) return "Full Stack";
-  return "Frontend";
-}
-
 const INDEXED = projects.map((p, i) => ({ p, i }));
 
 export function Projects() {
@@ -165,7 +158,7 @@ function ProjectRow({
 }) {
   const { isMinimal } = useAnimationMode();
   const num = String(index + 1).padStart(2, "0");
-  const cat = categoryFor(project.tech).toUpperCase();
+  const cat = project.category.toUpperCase();
 
   const Info = (
     <div className={reverse ? "md:pl-2" : "md:pr-2"}>
