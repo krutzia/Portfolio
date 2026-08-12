@@ -40,7 +40,7 @@ export function Contact() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-pink opacity-70" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-pink" />
             </span>
-            status: available for new projects
+            status: open to software engineering opportunities
           </div>
 
 
@@ -82,7 +82,7 @@ export function Contact() {
                 <InfoRow Icon={MapPin} label="Location" value={profile.location} />
               </div>
               <div className="mt-8 rounded-md border border-border bg-background/40 p-4 text-xs leading-relaxed text-muted-foreground">
-                Currently open to internships, full-time roles, and interesting collaborations.
+                Currently open to software engineering internships and full-time opportunities.
                 Typical response under 24 hours.
               </div>
             </div>

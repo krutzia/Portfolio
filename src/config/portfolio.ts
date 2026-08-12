@@ -52,7 +52,6 @@ export const skillCategories: SkillCategory[] = [
       { name: "Next.js", level: 82 },
       { name: "TypeScript", level: 88 },
       { name: "Tailwind CSS", level: 92 },
-      { name: "AngularJS", level: 70 },
       { name: "Figma", level: 78 },
     ],
   },
@@ -62,7 +61,6 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       { name: "Node.js", level: 86 },
       { name: "Express.js", level: 84 },
-      { name: "PHP", level: 68 },
       { name: "REST APIs", level: 88 },
     ],
   },
@@ -94,8 +92,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "Docker", level: 70 },
       { name: "Linux", level: 76 },
       { name: "AWS", level: 74 },
-      { name: "Netlify", level: 82 },
-      { name: "Render", level: 78 },
+      { name: "Vercel", level: 86 },
     ],
   },
   {
@@ -142,7 +139,7 @@ export const projects: Project[] = [
     category: "Healthcare · Web App",
     tagline: "Compare medical test prices across hospitals",
     description:
-      "AI-powered price intelligence for healthcare — compare MRI scans, blood tests, and consultations across verified hospitals with transparent pricing and real availability.",
+      "Price transparency for healthcare — compare MRI scans, blood tests, and consultations across verified hospitals, with real availability and clear savings before you book.",
     highlights: [
       "Rich comparison UI with search, filters, and savings insights",
       "TypeScript-first architecture with reusable component primitives",
@@ -176,12 +173,12 @@ export const projects: Project[] = [
   {
     name: "ResuMatch",
     category: "Career · AI Tool",
-    tagline: "AI-powered resume analysis & ATS scoring",
+    tagline: "Resume analysis & ATS scoring",
     description:
-      "Analyzes resumes against job descriptions, generates ATS match scores, identifies missing skills, and suggests optimized improvements.",
+      "Matches a resume against a job description to produce an ATS score, surface missing skills, and recommend concrete rewrites — with parsing, auth, and storage handled end to end.",
     highlights: [
       "Resume upload & parsing with Supabase Storage + Auth",
-      "AI-driven optimization via Edge Functions and external AI APIs",
+      "Scoring and rewrite suggestions via serverless Edge Functions",
       "Personalized dashboards with filtering and job recommendations",
     ],
     tech: ["React", "TypeScript", "Supabase", "Tailwind CSS", "Framer Motion"],
@@ -194,11 +191,11 @@ export const projects: Project[] = [
   {
     name: "CampusKart",
     category: "Marketplace · Full Stack",
-    tagline: "AI-powered marketplace for students",
+    tagline: "Campus marketplace for students",
     description:
-      "Full-stack marketplace for college students to buy, sell, and discover study resources — with AI-generated listings, intelligent search, and personalized recommendations.",
+      "Full-stack marketplace for college students to buy, sell, and discover study resources — with listing management, search, and recommendations built on a REST API.",
     highlights: [
-      "OpenAI-powered product descriptions and smart recommendations",
+      "Assisted listing descriptions and relevance-ranked recommendations",
       "Secure REST APIs, auth, product management on Node + Express + MongoDB",
       "Responsive UI with React, TypeScript, Tailwind & shadcn/ui — deployed on Vercel",
     ],
@@ -212,11 +209,11 @@ export const projects: Project[] = [
   {
     name: "CodeInsight",
     category: "Developer · AI Tool",
-    tagline: "AI code review & optimization platform",
+    tagline: "Automated code review & optimization",
     description:
-      "AI-powered code analysis platform that reviews source code, flags issues, and returns intelligent optimization, debugging suggestions, and a quality score.",
+      "Code analysis platform that reviews source files, flags issues, and returns optimization and debugging suggestions alongside a quality score.",
     highlights: [
-      "Before/after diffs with line-by-line AI suggestions",
+      "Before/after diffs with line-by-line suggestions",
       "Developer-focused UX with secure auth and scalable REST services",
       "Built with React, TypeScript, Tailwind — deployed on Vercel",
     ],
@@ -232,9 +229,9 @@ export const projects: Project[] = [
     category: "Edtech · AI Tool",
     tagline: "Turn lectures into study superpowers",
     description:
-      "Upload any lecture and get instant transcripts, smart summaries, flashcards, and a study buddy chatbot — all in one cozy workspace.",
+      "Upload a lecture recording and get transcripts, summaries, flashcards, and a study chatbot grounded in your own material — one workspace instead of five tools.",
     highlights: [
-      "Audio transcription with AI-generated summaries and flashcards",
+      "Audio transcription with generated summaries and flashcards",
       "Study buddy chatbot grounded in your own lecture content",
       "Playful, responsive UI deployed on Vercel",
     ],
@@ -248,11 +245,11 @@ export const projects: Project[] = [
   {
     name: "Silo Study AI",
     category: "Edtech · AI Tool",
-    tagline: "AI-powered study assistant",
+    tagline: "Adaptive study planner",
     description:
       "Creates personalized study plans that adapt to your progress, keeps you accountable with friends, and helps you crush every exam.",
     highlights: [
-      "AI-based study planning and intelligent content assistance",
+      "Adaptive study planning with content assistance",
       "Responsive modern UI for cross-device experience",
       "Backend APIs, database integration, and deployment workflows",
     ],
@@ -266,7 +263,7 @@ export const projects: Project[] = [
   {
     name: "FitTrack",
     category: "Fitness · Full Stack",
-    tagline: "AI-powered fitness tracking platform",
+    tagline: "Fitness tracking platform",
     description:
       "Full-stack fitness web app to monitor workouts, progress, and health activities with a modern responsive UI.",
     highlights: [
@@ -293,7 +290,7 @@ export type Achievement = {
 export const achievements: Achievement[] = [
   { value: 500, suffix: "+", label: "LeetCode Problems Solved", sub: "DSA, algorithms & system design" },
   { value: 2, suffix: "", label: "AWS Certifications", sub: "Cloud & AI Practitioner" },
-  { value: 6, suffix: "+", label: "Full Stack Projects Shipped", sub: "Live in production" },
+  { value: 8, suffix: "", label: "Full Stack Projects Shipped", sub: "Live in production" },
 ];
 
 

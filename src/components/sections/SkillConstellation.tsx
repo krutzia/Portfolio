@@ -19,8 +19,7 @@ import {
   SiGithub,
   SiDocker,
   SiLinux,
-  SiNetlify,
-  SiRender,
+  SiVercel,
   SiCplusplus,
   SiOpenjdk,
   SiPython,
@@ -62,8 +61,7 @@ const SKILL_ICON: Record<string, Brand> = {
   Docker: { icon: SiDocker, color: "#2496ED" },
   Linux: { icon: SiLinux, color: "#FCC624" },
   AWS: { icon: FaAws, color: "#FF9900" },
-  Netlify: { icon: SiNetlify, color: "#00C7B7" },
-  Render: { icon: SiRender, color: "#FFFFFF" },
+  Vercel: { icon: SiVercel, color: "#FFFFFF" },
 
   "C / C++": { icon: SiCplusplus, color: "#00599C" },
   Java: { icon: SiOpenjdk, color: "#F89820" },
@@ -98,9 +96,6 @@ export function SkillConstellation() {
                     <span className="h-1.5 w-1.5 rounded-full bg-brand-pink" />
                     {c.name}
                   </div>
-                  <span className="font-mono text-[10px] tabular-nums text-muted-foreground/70">
-                    {String(c.skills.length).padStart(2, "0")} skills
-                  </span>
                 </div>
 
                 <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
