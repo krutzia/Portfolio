@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { Menu, X, Sparkles, Gauge, Minus } from "lucide-react";
 import { useAnimationMode, type AnimationMode } from "@/context/AnimationModeContext";
+import { trackEvent } from "@/lib/analytics";
 
 const NAV = [
   { id: "home", label: "Home" },
@@ -141,6 +142,7 @@ export function Navbar() {
             download="Kashish-Resume.pdf"
             target="_blank"
             rel="noreferrer"
+            onClick={() => trackEvent("resume_download", { location: "navbar" })}
             className="hidden items-center gap-2 rounded-full border border-brand-pink/70 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-foreground transition-colors hover:bg-brand-pink/10 md:inline-flex"
           >
             <span className="relative flex h-1.5 w-1.5">
@@ -183,6 +185,7 @@ export function Navbar() {
                 download="Kashish-Resume.pdf"
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => trackEvent("resume_download", { location: "mobile-nav" })}
                 className="mt-1 block rounded-md px-3 py-2.5 text-sm text-foreground hover:bg-secondary"
               >
                 Resume ↗
