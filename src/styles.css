@@ -223,3 +223,30 @@ html { color-scheme: dark; }
 }
 
 
+
+/* ---- Accessible focus states (keyboard only) ---- */
+@layer base {
+  :where(a, button, input, textarea, select, summary, [tabindex]):focus {
+    outline: none;
+  }
+  :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+    outline: 2px solid var(--brand-pink);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  .skip-link {
+    position: fixed;
+    left: 1rem;
+    top: -100px;
+    z-index: 100;
+    border-radius: 6px;
+    background: var(--foreground);
+    color: var(--background);
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+    transition: top 0.15s ease;
+  }
+  .skip-link:focus-visible {
+    top: 1rem;
+  }
+}
