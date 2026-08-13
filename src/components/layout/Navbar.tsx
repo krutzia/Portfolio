@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
-import { Menu, X, Minus } from "lucide-react";
-import { useAnimationMode } from "@/context/AnimationModeContext";
+import { Menu, X } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
+
 
 const NAV = [
   { id: "home", label: "Home" },
