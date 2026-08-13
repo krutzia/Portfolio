@@ -17,7 +17,8 @@ const AnimationModeContext = createContext<Ctx | null>(null);
 const STORAGE_KEY = "portfolio:animation-mode";
 
 export function AnimationModeProvider({ children }: { children: ReactNode }) {
-  const [mode, setModeState] = useState<AnimationMode>("balanced");
+  const [mode, setModeState] = useState<AnimationMode>("cinematic");
+
 
   useEffect(() => {
     try {
