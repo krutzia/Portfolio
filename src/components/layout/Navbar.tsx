@@ -98,40 +98,8 @@ export function Navbar() {
         </LayoutGroup>
 
         <div className="flex items-center gap-2">
-          <LayoutGroup id="motion-mode">
-            <div
-              role="group"
-              aria-label="Animation mode"
-              className="hidden items-center gap-0.5 rounded-md border border-border bg-card/60 p-0.5 lg:flex"
-            >
-              {MODES.map(({ id, label, Icon }) => {
-                const isActive = mode === id;
-                return (
-                  <button
-                    key={id}
-                    onClick={() => setMode(id)}
-                    title={`${label} animations`}
-                    aria-pressed={isActive}
-                    className={
-                      "relative grid h-7 w-7 place-items-center rounded transition-colors " +
-                      (isActive ? "text-background" : "text-muted-foreground hover:text-foreground")
-                    }
-                  >
-                    {isActive && (
-                      <motion.span
-                        layoutId="motion-mode-pill"
-                        className="absolute inset-0 rounded bg-foreground"
-                        transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                      />
-                    )}
-                    <Icon className="relative z-10 h-3.5 w-3.5" />
-                  </button>
-                );
-              })}
-            </div>
-          </LayoutGroup>
-
           <a
+
             href="/resume.pdf"
             download="Kashish-Resume.pdf"
             target="_blank"
