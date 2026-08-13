@@ -77,6 +77,7 @@ export function Navbar() {
               return (
                 <button
                   key={item.id}
+                  aria-current={isActive ? "true" : undefined}
                   onClick={() => scrollTo(item.id)}
                   className={
                     "relative rounded-md px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.22em] transition-colors " +
@@ -115,6 +116,8 @@ export function Navbar() {
           </a>
           <button
             onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
             className="grid h-9 w-9 place-items-center rounded-md border border-border md:hidden"
             aria-label="Toggle menu"
           >
@@ -130,6 +133,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -4 }}
             transition={{ duration: 0.18 }}
+            id="mobile-nav"
             className="border-t border-border bg-background/95 backdrop-blur-md md:hidden"
           >
             <div className="mx-auto max-w-6xl px-4 py-2">

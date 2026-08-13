@@ -77,7 +77,8 @@ export function MagneticButton({
         rel={rel}
         onMouseMove={handleMove}
         onMouseLeave={reset}
-        className="inline-block"
+        onBlur={reset}
+        className="inline-block rounded-full focus-visible:outline-2"
       >
         {inner}
       </a>
@@ -89,8 +90,9 @@ export function MagneticButton({
       ref={ref as React.RefObject<HTMLButtonElement>}
       onMouseMove={handleMove}
       onMouseLeave={reset}
+      onBlur={reset}
       onClick={onClick}
-      className="inline-block bg-transparent border-0 p-0"
+      className="inline-block rounded-full border-0 bg-transparent p-0 focus-visible:outline-2"
       {...rest}
     >
       {inner}
