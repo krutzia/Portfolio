@@ -89,7 +89,7 @@ export function Contact() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <form onSubmit={handleSubmit} className="panel rounded-lg p-6">
+            <form onSubmit={handleSubmit} aria-label="Contact form" className="panel rounded-lg p-6">
               <div className="grid gap-4">
                 <Field name="name" label="Your name" placeholder="Jane Recruiter" />
                 <Field name="email" type="email" label="Email" placeholder="jane@company.com" />
@@ -114,6 +114,9 @@ export function Contact() {
                     </>
                   )}
                 </motion.button>
+                <p aria-live="polite" className="sr-only">
+                  {sent ? "Opening your mail app with the message." : ""}
+                </p>
               </div>
             </form>
           </Reveal>
@@ -182,14 +185,32 @@ function Field({
 }) {
   const base =
     "w-full rounded-md border border-border bg-background/60 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none transition-colors focus:border-[oklch(1_0_0_/_20%)] focus:bg-background";
+  const id = `contact-${name}`;
   return (
-    <label className="block">
-      <span className="mb-1.5 block text-xs text-muted-foreground">{label}</span>
+    <div className="block">
+      <label htmlFor={id} className="mb-1.5 block text-xs text-muted-foreground">
+        {label}
+      </label>
       {textarea ? (
-        <textarea name={name} required rows={5} placeholder={placeholder} className={base} />
+        <textarea
+          id={id}
+          name={name}
+          required
+          rows={5}
+          placeholder={placeholder}
+          className={base}
+        />
       ) : (
-        <input name={name} type={type} required placeholder={placeholder} className={base} />
+        <input
+          id={id}
+          name={name}
+          type={type}
+          required
+          autoComplete={name === "email" ? "email" : name === "name" ? "name" : undefined}
+          placeholder={placeholder}
+          className={base}
+        />
       )}
-    </label>
+    </div>
   );
 }
