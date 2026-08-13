@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
-import { Menu, X, Sparkles, Gauge, Minus } from "lucide-react";
-import { useAnimationMode, type AnimationMode } from "@/context/AnimationModeContext";
+import { Menu, X, Minus } from "lucide-react";
+import { useAnimationMode } from "@/context/AnimationModeContext";
 import { trackEvent } from "@/lib/analytics";
 
 const NAV = [
@@ -13,11 +13,6 @@ const NAV = [
   { id: "contact", label: "Contact" },
 ];
 
-const MODES: { id: AnimationMode; label: string; Icon: typeof Sparkles }[] = [
-  { id: "minimal", label: "Minimal", Icon: Minus },
-  { id: "balanced", label: "Balanced", Icon: Gauge },
-  { id: "cinematic", label: "Cinematic", Icon: Sparkles },
-];
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
