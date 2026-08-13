@@ -152,31 +152,9 @@ export function Navbar() {
               >
                 Resume ↗
               </a>
-              <div className="mt-2 flex items-center gap-1 border-t border-border pt-3">
-                <span className="px-3 text-[11px] uppercase tracking-wider text-muted-foreground">
-                  Motion
-                </span>
-                {MODES.map(({ id, label, Icon }) => {
-                  const isActive = mode === id;
-                  return (
-                    <button
-                      key={id}
-                      onClick={() => setMode(id)}
-                      className={
-                        "inline-flex items-center gap-1.5 rounded-md border px-2 py-1 text-xs transition-colors " +
-                        (isActive
-                          ? "border-foreground/40 bg-foreground text-background"
-                          : "border-border text-muted-foreground hover:text-foreground")
-                      }
-                    >
-                      <Icon className="h-3 w-3" />
-                      {label}
-                    </button>
-                  );
-                })}
-              </div>
             </div>
           </motion.div>
+
         )}
       </AnimatePresence>
     </header>
