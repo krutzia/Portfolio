@@ -216,7 +216,7 @@ export function Hero() {
             className="relative h-[70vh] min-h-[480px] w-full lg:h-full"
           >
             <img
-              src={profile.portraitUrl}
+              src="/assets/kashish-portrait.png"
               alt="Portrait of Kashish — Full Stack Developer"
               loading="eager"
               className="absolute inset-0 h-full w-full select-none object-cover object-top"

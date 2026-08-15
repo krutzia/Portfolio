@@ -2,7 +2,9 @@
  * Portfolio configuration — single source of truth.
  */
 
-import portrait from "@/assets/kashish-portrait.png.asset.json";
+// Use local static portrait file copied into `public/assets/`.
+// Kept as a static path to preserve exact cropping and styling from the published site.
+const PORTRAIT_URL = "/assets/kashish-portrait.png";
 import { validateSocials } from "@/lib/social-links";
 
 export const profile = {
@@ -13,7 +15,7 @@ export const profile = {
   location: "Noida, India",
   email: "kashish860458@gmail.com",
   phone: "+91 8604585161",
-  portraitUrl: portrait.url,
+  portraitUrl: PORTRAIT_URL,
   education: {
     school: "JSS Academy of Technical Education, Noida",
     degree: "B.Tech in Computer Science and Engineering",

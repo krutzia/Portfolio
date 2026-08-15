@@ -29,8 +29,8 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Kashish — Portfolio" },
-      { property: "og:url", content: "https://cosmos-canvas-kashish.lovable.app/" },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/eee2604a-6649-4ea1-8783-112ce61b8e02/id-preview-8b30c416--5a36e112-dca6-4c8b-bc5d-13adc9542c3d.lovable.app-1780313356574.png" },
+      { property: "og:url", content: "/" },
+      { property: "og:image", content: "/favicon.ico" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Kashish — Full Stack Developer Portfolio" },
       {
@@ -38,9 +38,9 @@ export const Route = createFileRoute("/")({
         content:
           "Full stack developer building thoughtful, production-grade products with React, Node, and TypeScript.",
       },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/eee2604a-6649-4ea1-8783-112ce61b8e02/id-preview-8b30c416--5a36e112-dca6-4c8b-bc5d-13adc9542c3d.lovable.app-1780313356574.png" },
+      { name: "twitter:image", content: "/favicon.ico" },
     ],
-    links: [{ rel: "canonical", href: "https://cosmos-canvas-kashish.lovable.app/" }],
+    links: [{ rel: "canonical", href: "/" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -49,7 +49,7 @@ export const Route = createFileRoute("/")({
           "@type": "Person",
           name: "Kashish",
           jobTitle: "Full Stack Developer",
-          url: "https://cosmos-canvas-kashish.lovable.app/",
+          url: "/",
           sameAs: ["https://github.com/krutzia", "https://www.linkedin.com/in/krutzia/"],
         }),
       },

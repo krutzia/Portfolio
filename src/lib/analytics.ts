@@ -2,7 +2,7 @@
  * Lightweight click analytics for recruiter-engagement tracking.
  *
  * Events are forwarded to any analytics provider present on the page
- * (Lovable analytics, Google Analytics, Plausible, Umami) and mirrored to
+ * (Google Analytics, Plausible, Umami) and mirrored to
  * localStorage so counts are inspectable even without a provider.
  */
 
