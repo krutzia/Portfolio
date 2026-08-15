@@ -3,6 +3,7 @@
  */
 
 import portrait from "@/assets/kashish-portrait.png.asset.json";
+import { validateSocials } from "@/lib/social-links";
 
 export const profile = {
   name: "Kashish",
