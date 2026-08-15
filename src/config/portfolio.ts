@@ -29,12 +29,18 @@ export const roles = [
   "Software Engineer",
 ];
 
-export const socials = {
+const rawSocials = {
   github: "https://github.com/krutzia",
-  linkedin: "https://www.linkdin.com/in/krutzia/",
+  linkedin: "https://www.linkedin.com/in/krutzia/",
   leetcode: "https://leetcode.com/u/krutzia/",
   email: "mailto:kashish860458@gmail.com",
 };
+
+/** Validated + normalized at module load — typos are logged and auto-corrected. */
+export const socialValidation = validateSocials(rawSocials);
+
+export const socials = socialValidation.hrefs;
+
 
 export type Skill = { name: string; level: number };
 export type SkillCategory = {
