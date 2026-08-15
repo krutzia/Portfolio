@@ -31,7 +31,7 @@ export const roles = [
 
 export const socials = {
   github: "https://github.com/krutzia",
-  linkedin: "https://www.linkedin.com/in/krutzia/",
+  linkedin: "https://www.linkdin.com/in/krutzia/",
   leetcode: "https://leetcode.com/u/krutzia/",
   email: "mailto:kashish860458@gmail.com",
 };
