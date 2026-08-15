@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Send, Github, Linkedin, Mail, MapPin, Check } from "lucide-react";
 import { Reveal } from "@/components/fx/Reveal";
 import { SectionLabel } from "@/components/sections/About";
-import { profile, socials } from "@/config/portfolio";
+import { profile, socials, socialValidation } from "@/config/portfolio";
 import { trackEvent, type TrackEventName } from "@/lib/analytics";
 
 
