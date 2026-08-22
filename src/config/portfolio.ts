@@ -22,7 +22,7 @@ export const profile = {
     period: "Sept 2023 – May 2027",
   },
 
-  resumeUrl: "/resume.pdf",
+  resumeUrl: "/resume.pdf?v=20260822",
 };
 
 export const roles = [
@@ -43,7 +43,6 @@ const rawSocials = {
 export const socialValidation = validateSocials(rawSocials);
 
 export const socials = socialValidation.hrefs;
-
 
 export type Skill = { name: string; level: number };
 export type SkillCategory = {
@@ -118,7 +117,6 @@ export const skillCategories: SkillCategory[] = [
   },
 ];
 
-
 import shotNomad from "@/assets/shot-9.png.asset.json";
 import shotMedi from "@/assets/shot-10.png.asset.json";
 import shotSilo from "@/assets/shot-11.png.asset.json";
@@ -131,6 +129,7 @@ import shotFitTrack from "@/assets/shot-16.png.asset.json";
 export type Project = {
   name: string;
   category: string;
+  filterCategory: "Full Stack" | "Frontend" | "AI/Backend";
   tagline: string;
   description: string;
   highlights: string[];
@@ -146,6 +145,7 @@ export const projects: Project[] = [
   {
     name: "MediCompare",
     category: "Healthcare · Web App",
+    filterCategory: "Full Stack",
     tagline: "Compare medical test prices across hospitals",
     description:
       "Price transparency for healthcare — compare MRI scans, blood tests, and consultations across verified hospitals, with real availability and clear savings before you book.",
@@ -164,6 +164,7 @@ export const projects: Project[] = [
   {
     name: "Nomad",
     category: "Travel · Web App",
+    filterCategory: "Frontend",
     tagline: "Collaborative trip planner for crews",
     description:
       "Trip planning app that turns a single draggable route into day-by-day itineraries, budgets, packing lists, and real-time companions — keeping every adventurer on the same page.",
@@ -182,6 +183,7 @@ export const projects: Project[] = [
   {
     name: "ResuMatch",
     category: "Career · AI Tool",
+    filterCategory: "Full Stack",
     tagline: "Resume analysis & ATS scoring",
     description:
       "Matches a resume against a job description to produce an ATS score, surface missing skills, and recommend concrete rewrites — with parsing, auth, and storage handled end to end.",
@@ -200,6 +202,7 @@ export const projects: Project[] = [
   {
     name: "CampusKart",
     category: "Marketplace · Full Stack",
+    filterCategory: "Full Stack",
     tagline: "Campus marketplace for students",
     description:
       "Full-stack marketplace for college students to buy, sell, and discover study resources — with listing management, search, and recommendations built on a REST API.",
@@ -218,6 +221,7 @@ export const projects: Project[] = [
   {
     name: "CodeInsight",
     category: "Developer · AI Tool",
+    filterCategory: "AI/Backend",
     tagline: "Automated code review & optimization",
     description:
       "Code analysis platform that reviews source files, flags issues, and returns optimization and debugging suggestions alongside a quality score.",
@@ -236,6 +240,7 @@ export const projects: Project[] = [
   {
     name: "SmartLecture AI",
     category: "Edtech · AI Tool",
+    filterCategory: "AI/Backend",
     tagline: "Turn lectures into study superpowers",
     description:
       "Upload a lecture recording and get transcripts, summaries, flashcards, and a study chatbot grounded in your own material — one workspace instead of five tools.",
@@ -254,6 +259,7 @@ export const projects: Project[] = [
   {
     name: "Silo Study AI",
     category: "Edtech · AI Tool",
+    filterCategory: "Frontend",
     tagline: "Adaptive study planner",
     description:
       "Creates personalized study plans that adapt to your progress, keeps you accountable with friends, and helps you crush every exam.",
@@ -272,6 +278,7 @@ export const projects: Project[] = [
   {
     name: "FitTrack",
     category: "Fitness · Full Stack",
+    filterCategory: "Full Stack",
     tagline: "Fitness tracking platform",
     description:
       "Full-stack fitness web app to monitor workouts, progress, and health activities with a modern responsive UI.",
@@ -297,11 +304,15 @@ export type Achievement = {
 };
 
 export const achievements: Achievement[] = [
-  { value: 500, suffix: "+", label: "LeetCode Problems Solved", sub: "DSA, algorithms & system design" },
+  {
+    value: 500,
+    suffix: "+",
+    label: "LeetCode Problems Solved",
+    sub: "DSA, algorithms & system design",
+  },
   { value: 2, suffix: "", label: "AWS Certifications", sub: "Cloud & AI Practitioner" },
   { value: 8, suffix: "", label: "Full Stack Projects Shipped", sub: "Live in production" },
 ];
-
 
 export const certifications = [
   {

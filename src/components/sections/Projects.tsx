@@ -12,16 +12,12 @@ import {
   GenericMockup,
 } from "@/components/sections/ProjectMockups";
 
-const FILTERS = ["All", "Full Stack", "Frontend", "AI"] as const;
+const FILTERS = ["All", "Full Stack", "Frontend", "AI/Backend"] as const;
 type Filter = (typeof FILTERS)[number];
 
-function matches(filter: Filter, tech: string[]) {
+function matches(filter: Filter, category: Project["filterCategory"]) {
   if (filter === "All") return true;
-  const s = tech.join(" ").toLowerCase();
-  if (filter === "Full Stack") return /node|express|mongo|supabase/.test(s);
-  if (filter === "Frontend") return /react|tailwind|next/.test(s);
-  if (filter === "AI") return /ai|openai|claude|embedding|supabase/.test(s);
-  return true;
+  return filter === category;
 }
 
 const INDEXED = projects.map((p, i) => ({ p, i }));
@@ -31,14 +27,19 @@ export function Projects() {
   const { isMinimal, intensity } = useAnimationMode();
 
   const filtered = useMemo(
-    () => INDEXED.filter(({ p }) => matches(filter, p.tech)).sort((a, b) => a.i - b.i),
+    () => INDEXED.filter(({ p }) => matches(filter, p.filterCategory)).sort((a, b) => a.i - b.i),
     [filter],
   );
 
   const counts = useMemo(() => {
-    const c: Record<Filter, number> = { All: 0, "Full Stack": 0, Frontend: 0, AI: 0 };
+    const c: Record<Filter, number> = {
+      All: 0,
+      "Full Stack": 0,
+      Frontend: 0,
+      "AI/Backend": 0,
+    };
     FILTERS.forEach((f) => {
-      c[f] = projects.filter((p) => matches(f, p.tech)).length;
+      c[f] = projects.filter((p) => matches(f, p.filterCategory)).length;
     });
     return c;
   }, []);

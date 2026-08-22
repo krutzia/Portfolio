@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
-
+import { profile } from "@/config/portfolio";
 
 const NAV = [
   { id: "home", label: "Home" },
@@ -12,7 +12,6 @@ const NAV = [
   { id: "achievements", label: "Stats" },
   { id: "contact", label: "Contact" },
 ];
-
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -100,8 +99,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <a
-
-            href="/resume.pdf"
+            href={profile.resumeUrl}
             download="Kashish-Resume.pdf"
             target="_blank"
             rel="noreferrer"
@@ -147,7 +145,7 @@ export function Navbar() {
                 </button>
               ))}
               <a
-                href="/resume.pdf"
+                href={profile.resumeUrl}
                 download="Kashish-Resume.pdf"
                 target="_blank"
                 rel="noreferrer"
@@ -158,7 +156,6 @@ export function Navbar() {
               </a>
             </div>
           </motion.div>
-
         )}
       </AnimatePresence>
     </header>

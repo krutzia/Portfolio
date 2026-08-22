@@ -4,7 +4,6 @@ import { profile, socials } from "@/config/portfolio";
 import { useAnimationMode } from "@/context/AnimationModeContext";
 import { trackEvent } from "@/lib/analytics";
 
-
 export function Hero() {
   const { isMinimal, intensity } = useAnimationMode();
 
@@ -68,7 +67,6 @@ export function Hero() {
         </div>
       )}
 
-
       <motion.div
         variants={container}
         initial="hidden"
@@ -105,16 +103,11 @@ export function Hero() {
             variants={item}
             className="mt-6 max-w-xl text-[15px] leading-relaxed text-muted-foreground"
           >
-            I turn <span className="text-foreground">"what if?"</span> into products
+            From first commit to production.
             <br />
-            that refuse to blend in.
-            <br />
-            Full-stack developer building thoughtful,
-            <br />
-            AI-powered products from idea to deployment.
+            Building across frontend, backend, APIs, databases, and deployment to turn ideas into
+            real-world products.
           </motion.p>
-
-
 
           <motion.div
             variants={item}
@@ -176,7 +169,6 @@ export function Hero() {
               <Linkedin className="h-4 w-4" />
             </a>
             <a
-
               href={socials.leetcode}
               target="_blank"
               rel="noreferrer"
@@ -247,17 +239,18 @@ export function Hero() {
       <motion.button
         onClick={() => scrollTo("about")}
         initial={{ opacity: 0 }}
-        animate={
-          isMinimal
-            ? { opacity: 0.7 }
-            : { opacity: 1, y: [0, 4 + intensity * 4, 0] }
-        }
+        animate={isMinimal ? { opacity: 0.7 } : { opacity: 1, y: [0, 4 + intensity * 4, 0] }}
         transition={
           isMinimal
             ? { duration: 0.3 }
             : {
                 opacity: { delay: 0.9, duration: 0.6 },
-                y: { delay: 0.9, duration: 2.2 - intensity * 0.4, repeat: Infinity, ease: "easeInOut" },
+                y: {
+                  delay: 0.9,
+                  duration: 2.2 - intensity * 0.4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                },
               }
         }
         aria-label="Scroll to about"

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Send, Github, Linkedin, Mail, MapPin, Check } from "lucide-react";
 import { Reveal } from "@/components/fx/Reveal";
 import { SectionLabel } from "@/components/sections/About";
-import { profile, socials, socialValidation } from "@/config/portfolio";
+import { profile, socials } from "@/config/portfolio";
 import { trackEvent, type TrackEventName } from "@/lib/analytics";
 
 
@@ -80,36 +80,6 @@ export function Contact() {
                 />
 
                 <InfoRow Icon={MapPin} label="Location" value={profile.location} />
-              </div>
-              <div className="mt-6 rounded-md border border-border bg-background/40 p-4">
-                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-                  Link check
-                </p>
-                <ul className="mt-3 space-y-1.5">
-                  {socialValidation.checks
-                    .filter((c) => c.key !== "leetcode")
-                    .map((c) => (
-                      <li key={c.key} className="flex items-center gap-2 font-mono text-[11px]">
-                        <span
-                          aria-hidden
-                          className={`h-1.5 w-1.5 shrink-0 rounded-full ${
-                            c.ok ? "bg-emerald-400" : "bg-destructive"
-                          }`}
-                        />
-                        <span className="w-16 shrink-0 uppercase tracking-wider text-muted-foreground">
-                          {c.key}
-                        </span>
-                        <a
-                          href={c.href}
-                          target={c.key === "email" ? undefined : "_blank"}
-                          rel="noreferrer"
-                          className="truncate text-foreground/80 underline-offset-4 hover:underline"
-                        >
-                          {c.display}
-                        </a>
-                      </li>
-                    ))}
-                </ul>
               </div>
               <div className="mt-4 rounded-md border border-border bg-background/40 p-4 text-xs leading-relaxed text-muted-foreground">
                 Currently open to software engineering internships and full-time opportunities.
