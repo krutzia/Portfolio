@@ -103,10 +103,9 @@ export function Hero() {
             variants={item}
             className="mt-6 max-w-xl text-[15px] leading-relaxed text-muted-foreground"
           >
-            From first commit to production.
-            <br />
-            Building across frontend, backend, APIs, databases, and deployment to turn ideas into
-            real-world products.
+            A full-stack developer and problem solver, building production-ready web applications
+            with a focus on scalable backend systems, modern frontend experiences, and AI-powered
+            solutions.
           </motion.p>
 
           <motion.div

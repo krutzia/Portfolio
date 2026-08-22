@@ -8,7 +8,6 @@ import { ScrollProgress } from '@/components/layout/ScrollProgress'
 import { GlobalBackground } from '@/components/layout/GlobalBackground'
 
 import { Hero } from '@/components/sections/Hero'
-import { About } from '@/components/sections/About'
 import { SkillConstellation } from '@/components/sections/SkillConstellation'
 import { Projects } from '@/components/sections/Projects'
 import { Experience } from '@/components/sections/Experience'
@@ -27,7 +26,6 @@ function App() {
         <Navbar />
         <main>
           <Hero />
-          <About />
           <SkillConstellation />
           <Projects />
           <Experience />

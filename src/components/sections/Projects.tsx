@@ -51,7 +51,7 @@ export function Projects() {
     <section id="projects" className="relative border-t border-border px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <SectionLabel number="03">Selected Work — shipped, live, in production</SectionLabel>
+          <SectionLabel number="02">Selected Work — shipped, live, in production</SectionLabel>
           <div className="mt-4 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
             <h2 className="max-w-2xl text-3xl font-semibold leading-tight sm:text-4xl">
               Products I've shipped end to end.

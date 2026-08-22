@@ -76,7 +76,7 @@ export function SkillConstellation() {
     <section id="skills" className="relative border-t border-border px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <SectionLabel number="02">Tech Stack — tools I ship with</SectionLabel>
+          <SectionLabel number="01">Tech Stack — tools I ship with</SectionLabel>
           <div className="mt-4 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
             <h2 className="max-w-2xl text-3xl font-semibold leading-tight sm:text-4xl">
               The toolkit behind shipped products.

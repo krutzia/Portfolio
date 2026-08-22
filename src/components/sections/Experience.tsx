@@ -14,7 +14,7 @@ export function Experience() {
     <section id="experience" className="relative border-t border-border px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <SectionLabel>Experience</SectionLabel>
+          <SectionLabel number="03">Experience</SectionLabel>
           <div className="mt-10 panel rounded-lg p-6 sm:p-7">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
               <div>
