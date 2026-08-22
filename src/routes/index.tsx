@@ -8,7 +8,7 @@ import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { SkillConstellation } from "@/components/sections/SkillConstellation";
 import { Projects } from "@/components/sections/Projects";
-import { Achievements } from "@/components/sections/Achievements";
+import { Experience } from "@/components/sections/Experience";
 import { LeetCode } from "@/components/sections/LeetCode";
 import { Contact } from "@/components/sections/Contact";
 
@@ -76,7 +76,7 @@ function Home() {
           <About />
           <SkillConstellation />
           <Projects />
-          <Achievements />
+          <Experience />
           <LeetCode />
           <Contact />
         </main>
