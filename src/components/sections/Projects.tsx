@@ -22,14 +22,17 @@ function matches(filter: Filter, category: Project["filterCategory"]) {
 }
 
 const INDEXED = projects.map((p, i) => ({ p, i }));
+const FEATURED_PROJECTS = new Set(["ResuMatch", "MediCompare"]);
 
-export function Projects() {
+export function Projects({ featuredOnly = true }: { featuredOnly?: boolean }) {
   const [filter, setFilter] = useState<Filter>("All");
   const { isMinimal, intensity } = useAnimationMode();
 
   const filtered = useMemo(
-    () => INDEXED.filter(({ p }) => matches(filter, p.filterCategory)).sort((a, b) => a.i - b.i),
-    [filter],
+    () => INDEXED
+      .filter(({ p }) => (!featuredOnly || FEATURED_PROJECTS.has(p.name)) && matches(filter, p.filterCategory))
+      .sort((a, b) => (a.p.name === "ResuMatch" ? -1 : b.p.name === "ResuMatch" ? 1 : a.i - b.i)),
+    [featuredOnly, filter],
   );
 
   const counts = useMemo(() => {
@@ -40,10 +43,10 @@ export function Projects() {
       "AI/Backend": 0,
     };
     FILTERS.forEach((f) => {
-      c[f] = projects.filter((p) => matches(f, p.filterCategory)).length;
+      c[f] = projects.filter((p) => (!featuredOnly || FEATURED_PROJECTS.has(p.name)) && matches(f, p.filterCategory)).length;
     });
     return c;
-  }, []);
+  }, [featuredOnly]);
 
   const ease = [0.22, 1, 0.36, 1] as const;
   const baseDuration = isMinimal ? 0.2 : 0.35 + intensity * 0.2;
@@ -63,10 +66,10 @@ export function Projects() {
                 experience.
               </p>
               <Link
-                to="/projects"
+                to={featuredOnly ? "/projects" : "/"}
                 className="mt-4 inline-flex text-xs font-semibold uppercase tracking-[0.18em] text-brand-pink transition-opacity hover:opacity-75"
               >
-                View All Projects <span className="ml-2" aria-hidden>↗</span>
+                {featuredOnly ? "View All Projects" : "Back to Home"} <span className="ml-2" aria-hidden>↗</span>
               </Link>
             </div>
           </div>
@@ -125,7 +128,7 @@ export function Projects() {
         <LayoutGroup id="project-grid">
           <motion.div layout className="mt-14 space-y-20 md:space-y-28">
             <AnimatePresence mode="popLayout" initial={false}>
-              {filtered.map(({ p, i }, displayIndex) => (
+              {filtered.map(({ p }, displayIndex) => (
                 <motion.div
                   key={p.name}
                   layout={!isMinimal}
@@ -141,7 +144,7 @@ export function Projects() {
                       : { type: "spring", stiffness: 260, damping: 28 },
                   }}
                 >
-                  <ProjectRow project={p} index={i} reverse={displayIndex % 2 === 1} />
+                  <ProjectRow project={p} index={displayIndex} reverse={displayIndex % 2 === 1} />
                 </motion.div>
               ))}
             </AnimatePresence>
@@ -157,7 +160,7 @@ export function Projects() {
   );
 }
 
-function ProjectRow({
+export function ProjectRow({
   project,
   index,
   reverse,
