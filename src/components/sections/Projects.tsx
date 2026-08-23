@@ -75,55 +75,57 @@ export function Projects({ featuredOnly = true }: { featuredOnly?: boolean }) {
           </div>
         </Reveal>
 
-        <Reveal delay={0.05}>
-          <LayoutGroup id="project-filters">
-            <div
-              role="tablist"
-              aria-label="Project category filter"
-              className="mt-10 flex w-fit flex-wrap items-center gap-1 rounded-full border border-border bg-card/60 p-1"
-            >
-              {FILTERS.map((f) => {
-                const isActive = filter === f;
-                const count = counts[f];
-                return (
-                  <button
-                    key={f}
-                    role="tab"
-                    aria-selected={isActive}
-                    onClick={() => setFilter(f)}
-                    className={
-                      "relative inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-medium transition-colors " +
-                      (isActive ? "text-background" : "text-muted-foreground hover:text-foreground")
-                    }
-                  >
-                    {isActive && (
-                      <motion.span
-                        layoutId="project-filter-pill"
-                        className="absolute inset-0 rounded-full bg-foreground"
-                        transition={
-                          isMinimal
-                            ? { duration: 0.15, ease }
-                            : { type: "spring", stiffness: 380, damping: 32 }
-                        }
-                      />
-                    )}
-                    <span className="relative z-10">{f}</span>
-                    <span
+        {!featuredOnly && (
+          <Reveal delay={0.05}>
+            <LayoutGroup id="project-filters">
+              <div
+                role="tablist"
+                aria-label="Project category filter"
+                className="mt-10 flex w-fit flex-wrap items-center gap-1 rounded-full border border-border bg-card/60 p-1"
+              >
+                {FILTERS.map((f) => {
+                  const isActive = filter === f;
+                  const count = counts[f];
+                  return (
+                    <button
+                      key={f}
+                      role="tab"
+                      aria-selected={isActive}
+                      onClick={() => setFilter(f)}
                       className={
-                        "relative z-10 rounded-full px-1.5 text-[10px] tabular-nums " +
-                        (isActive
-                          ? "bg-background/15 text-background/80"
-                          : "bg-secondary/60 text-muted-foreground")
+                        "relative inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-medium transition-colors " +
+                        (isActive ? "text-background" : "text-muted-foreground hover:text-foreground")
                       }
                     >
-                      {count}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          </LayoutGroup>
-        </Reveal>
+                      {isActive && (
+                        <motion.span
+                          layoutId="project-filter-pill"
+                          className="absolute inset-0 rounded-full bg-foreground"
+                          transition={
+                            isMinimal
+                              ? { duration: 0.15, ease }
+                              : { type: "spring", stiffness: 380, damping: 32 }
+                          }
+                        />
+                      )}
+                      <span className="relative z-10">{f}</span>
+                      <span
+                        className={
+                          "relative z-10 rounded-full px-1.5 text-[10px] tabular-nums " +
+                          (isActive
+                            ? "bg-background/15 text-background/80"
+                            : "bg-secondary/60 text-muted-foreground")
+                        }
+                      >
+                        {count}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </LayoutGroup>
+          </Reveal>
+        )}
 
         <LayoutGroup id="project-grid">
           <motion.div layout className="mt-14 space-y-20 md:space-y-28">

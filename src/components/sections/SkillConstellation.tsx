@@ -135,7 +135,7 @@ export function SkillConstellation() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-120px" }}
                 transition={{ duration: isMinimal ? 0.2 : 0.65, ease: [0.22, 1, 0.36, 1] }}
-                className="mt-8 max-w-3xl text-5xl font-semibold leading-[0.92] tracking-[-0.045em] sm:text-6xl lg:text-7xl"
+                className="mt-8 max-w-3xl text-3xl font-semibold leading-tight tracking-[-0.045em] sm:text-4xl"
               >
                 The toolkit behind my shipped products.
               </motion.h2>
@@ -143,12 +143,12 @@ export function SkillConstellation() {
           </div>
           <Reveal delay={0.12} y={16}>
             <div className="flex flex-col justify-center md:pt-8">
-              <p className="max-w-sm text-base leading-relaxed text-muted-foreground md:text-lg">
+              <p className="max-w-sm text-sm text-muted-foreground">
                 A curated stack chosen for reliability, developer experience, and shipping speed.
               </p>
               <Link
                 to="/skills"
-                className="group mt-7 inline-flex w-fit items-center text-xs font-semibold uppercase tracking-[0.2em] text-brand-pink transition-all duration-500 hover:translate-x-1 hover:opacity-75"
+                className="group mt-7 inline-flex w-fit items-center text-xs font-semibold uppercase tracking-[0.18em] text-brand-pink transition-all duration-500 hover:translate-x-1 hover:opacity-75"
               >
                 View All Skills <span className="ml-2 transition-transform duration-500 group-hover:translate-x-1" aria-hidden>→</span>
               </Link>
