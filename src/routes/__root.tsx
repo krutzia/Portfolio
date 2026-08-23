@@ -1,6 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
-  Outlet,
   Link,
   createRootRouteWithContext,
   useRouter,
@@ -10,6 +9,8 @@ import {
 import { type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import { AnimationModeProvider } from "@/context/AnimationModeContext";
+import { RouteTransition } from "@/components/layout/RouteTransition";
 
 function NotFoundComponent() {
   return (
@@ -119,8 +120,9 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <AnimationModeProvider>
+        <RouteTransition />
+      </AnimationModeProvider>
     </QueryClientProvider>
   );
 }

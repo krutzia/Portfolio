@@ -1,49 +1,15 @@
-import React from 'react'
-import { createRoot } from 'react-dom/client'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { RouterProvider } from "@tanstack/react-router";
+import { getRouter } from "@/router";
 
-import { AnimationModeProvider } from '@/context/AnimationModeContext'
-import { Navbar } from '@/components/layout/Navbar'
-import { ScrollProgress } from '@/components/layout/ScrollProgress'
-import { GlobalBackground } from '@/components/layout/GlobalBackground'
+import "@/styles.css";
 
-import { Hero } from '@/components/sections/Hero'
-import { SkillConstellation } from '@/components/sections/SkillConstellation'
-import { Projects } from '@/components/sections/Projects'
-import { Experience } from '@/components/sections/Experience'
-import { LeetCode } from '@/components/sections/LeetCode'
-import { Contact } from '@/components/sections/Contact'
+const router = getRouter();
+const root = createRoot(document.getElementById("root")!);
 
-import '@/styles.css'
-
-function App() {
-  return (
-    <AnimationModeProvider>
-      <div className="relative min-h-screen bg-background text-foreground">
-        <a href="#home" className="skip-link">Skip to content</a>
-        <GlobalBackground />
-        <ScrollProgress />
-        <Navbar />
-        <main>
-          <Hero />
-          <SkillConstellation />
-          <Projects />
-          <Experience />
-          <LeetCode />
-          <Contact />
-        </main>
-      </div>
-    </AnimationModeProvider>
-  )
-}
-
-const queryClient = new QueryClient()
-
-const root = createRoot(document.getElementById('root')!)
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <App />
-    </QueryClientProvider>
-  </React.StrictMode>
-)
+    <RouterProvider router={router} />
+  </React.StrictMode>,
+);

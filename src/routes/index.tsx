@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { AnimationModeProvider } from "@/context/AnimationModeContext";
 import { Navbar } from "@/components/layout/Navbar";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { GlobalBackground } from "@/components/layout/GlobalBackground";
@@ -59,26 +58,24 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   return (
-    <AnimationModeProvider>
-      <div className="relative min-h-screen bg-background text-foreground">
-        <a href="#home" className="skip-link">
-          Skip to content
-        </a>
-        <GlobalBackground />
+    <div className="relative min-h-screen bg-background text-foreground">
+      <a href="#home" className="skip-link">
+        Skip to content
+      </a>
+      <GlobalBackground />
 
-        <ScrollProgress />
+      <ScrollProgress />
 
 
-        <Navbar />
-        <main>
-          <Hero />
-          <SkillConstellation />
-          <Projects />
-          <Experience />
-          <LeetCode />
-          <Contact />
-        </main>
-      </div>
-    </AnimationModeProvider>
+      <Navbar />
+      <main>
+        <Hero />
+        <SkillConstellation />
+        <Projects />
+        <Experience />
+        <LeetCode />
+        <Contact />
+      </main>
+    </div>
   );
 }

@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import { Reveal } from "@/components/fx/Reveal";
@@ -56,10 +57,18 @@ export function Projects() {
             <h2 className="max-w-2xl text-3xl font-semibold leading-tight sm:text-4xl">
               Products I've shipped end to end.
             </h2>
-            <p className="max-w-sm text-sm text-muted-foreground">
-              Eight production projects across AI tooling, full-stack apps, and developer
-              experience.
-            </p>
+            <div className="max-w-sm">
+              <p className="text-sm text-muted-foreground">
+                Eight production projects across AI tooling, full-stack apps, and developer
+                experience.
+              </p>
+              <Link
+                to="/projects"
+                className="mt-4 inline-flex text-xs font-semibold uppercase tracking-[0.18em] text-brand-pink transition-opacity hover:opacity-75"
+              >
+                View All Projects <span className="ml-2" aria-hidden>↗</span>
+              </Link>
+            </div>
           </div>
         </Reveal>
 

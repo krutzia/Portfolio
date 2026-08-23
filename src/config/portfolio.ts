@@ -58,9 +58,8 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       { name: "React.js", level: 92 },
       { name: "Next.js", level: 82 },
-      { name: "TypeScript", level: 88 },
       { name: "Tailwind CSS", level: 92 },
-      { name: "Figma", level: 78 },
+      { name: "HTML / CSS", level: 92 },
     ],
   },
   {
@@ -70,6 +69,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "Node.js", level: 86 },
       { name: "Express.js", level: 84 },
       { name: "REST APIs", level: 88 },
+      { name: "Supabase", level: 84 },
     ],
   },
   {
@@ -83,20 +83,19 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    name: "Databases",
+    name: "Database",
     accent: "var(--cosmos-pink)",
     skills: [
       { name: "MongoDB", level: 82 },
       { name: "PostgreSQL", level: 78 },
       { name: "MySQL", level: 78 },
-      { name: "Supabase", level: 84 },
+      { name: "SQL", level: 82 },
     ],
   },
   {
-    name: "Developer Tools",
+    name: "DevOps",
     accent: "var(--cosmos-amber)",
     skills: [
-      { name: "Git / GitHub", level: 90 },
       { name: "Docker", level: 70 },
       { name: "Linux", level: 76 },
       { name: "AWS", level: 74 },
@@ -104,15 +103,22 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    name: "Languages",
+    name: "Language",
     accent: "var(--cosmos-emerald)",
     skills: [
+      { name: "TypeScript", level: 88 },
       { name: "C / C++", level: 90 },
       { name: "Java", level: 82 },
       { name: "Python", level: 82 },
       { name: "JavaScript", level: 92 },
-      { name: "SQL", level: 82 },
-      { name: "HTML / CSS", level: 92 },
+    ],
+  },
+  {
+    name: "Tools",
+    accent: "var(--cosmos-amber)",
+    skills: [
+      { name: "Figma", level: 78 },
+      { name: "Git / GitHub", level: 90 },
     ],
   },
 ];
