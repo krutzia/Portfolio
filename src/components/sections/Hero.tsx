@@ -34,7 +34,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[100svh] items-center overflow-hidden px-6 pb-20 pt-32"
+      className="relative flex min-h-[100svh] items-center overflow-hidden px-6 pb-20 pt-16"
     >
       <div
         aria-hidden
@@ -71,7 +71,7 @@ export function Hero() {
         variants={container}
         initial="hidden"
         animate="visible"
-        className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-[1.35fr_1fr] lg:gap-16"
+        className="mx-auto grid w-full max-w-6xl grid-cols-1 items-start gap-12 lg:grid-cols-[1.35fr_1fr] lg:gap-16"
       >
         {/* LEFT — Text */}
         <div className="order-2 text-left lg:order-1">
