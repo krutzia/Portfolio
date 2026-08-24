@@ -7,7 +7,7 @@ export function RouteTransition() {
   const { isMinimal } = useAnimationMode();
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
+    <AnimatePresence mode="popLayout" initial={false}>
       <motion.div
         key={pathname}
         initial={{ opacity: 0, y: isMinimal ? 0 : 8 }}

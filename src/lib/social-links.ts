@@ -122,9 +122,7 @@ export function normalizeSocialLink(key: SocialKey, raw: string): LinkCheck {
 }
 
 export function validateSocials(input: Record<SocialKey, string>) {
-  const checks = (Object.keys(input) as SocialKey[]).map((k) =>
-    normalizeSocialLink(k, input[k]),
-  );
+  const checks = (Object.keys(input) as SocialKey[]).map((k) => normalizeSocialLink(k, input[k]));
   const byKey = Object.fromEntries(checks.map((c) => [c.key, c])) as Record<SocialKey, LinkCheck>;
   const issues = checks.flatMap((c) => c.issues);
 

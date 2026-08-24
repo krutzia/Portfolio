@@ -47,9 +47,9 @@
   --background: oklch(0.06 0 0);
   --foreground: oklch(0.96 0.005 260);
 
-  --card: oklch(0.10 0.003 260);
+  --card: oklch(0.1 0.003 260);
   --card-foreground: oklch(0.96 0.005 260);
-  --popover: oklch(0.10 0.003 260);
+  --popover: oklch(0.1 0.003 260);
   --popover-foreground: oklch(0.96 0.005 260);
 
   --primary: oklch(0.96 0.005 260);
@@ -77,11 +77,17 @@
   --color-brand-pink: var(--brand-pink);
 }
 
-html { color-scheme: dark; }
+html {
+  color-scheme: dark;
+}
 
 @layer base {
-  * { border-color: var(--color-border); }
-  html { scroll-behavior: smooth; }
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -90,18 +96,30 @@ html { color-scheme: dark; }
     overflow-x: hidden;
     font-feature-settings: "ss01", "cv11";
   }
-  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; font-weight: 600; }
-  ::selection { background: oklch(0.7 0.12 235 / 0.3); color: white; }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    font-weight: 600;
+  }
+  ::selection {
+    background: oklch(0.7 0.12 235 / 0.3);
+    color: white;
+  }
 }
 
 @layer utilities {
   /* Reduced glass — almost flat with thin border */
   .panel {
-    background: oklch(0.10 0.003 260 / 0.6);
+    background: oklch(0.1 0.003 260 / 0.6);
     border: 1px solid var(--color-border);
   }
   .panel-hover {
-    transition: background-color 200ms ease, border-color 200ms ease;
+    transition:
+      background-color 200ms ease,
+      border-color 200ms ease;
   }
   .panel-hover:hover {
     background: oklch(0.14 0.004 260 / 0.7);
@@ -117,10 +135,18 @@ html { color-scheme: dark; }
     background-image: radial-gradient(oklch(1 0 0 / 0.07) 1px, transparent 1px);
     background-size: 22px 22px;
   }
-  .text-accent-blue { color: var(--accent-blue); }
-  .text-brand-pink { color: var(--brand-pink); }
-  .bg-brand-pink { background-color: var(--brand-pink); }
-  .border-brand-pink { border-color: var(--brand-pink); }
+  .text-accent-blue {
+    color: var(--accent-blue);
+  }
+  .text-brand-pink {
+    color: var(--brand-pink);
+  }
+  .bg-brand-pink {
+    background-color: var(--brand-pink);
+  }
+  .border-brand-pink {
+    border-color: var(--brand-pink);
+  }
   .mono-label {
     font-family: var(--font-mono);
     text-transform: uppercase;
@@ -131,21 +157,43 @@ html { color-scheme: dark; }
 }
 
 @keyframes hero-laser {
-  0% { transform: translate3d(-50%, -20vh, 0); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translate3d(-50%, 110vh, 0); opacity: 0; }
+  0% {
+    transform: translate3d(-50%, -20vh, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(-50%, 110vh, 0);
+    opacity: 0;
+  }
 }
 @layer utilities {
   .hero-laser-beam {
-    background: linear-gradient(to bottom, transparent, oklch(1 0 0 / 0.55) 40%, oklch(0.85 0.12 210 / 0.7) 60%, transparent);
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      oklch(1 0 0 / 0.55) 40%,
+      oklch(0.85 0.12 210 / 0.7) 60%,
+      transparent
+    );
     filter: blur(24px);
     opacity: 0.7;
     animation: hero-laser 8s ease-in-out infinite;
   }
   @media (prefers-reduced-motion: reduce) {
-    .hero-laser-beam { animation: none; display: none; }
-    .global-light-beam { animation: none; display: none; }
+    .hero-laser-beam {
+      animation: none;
+      display: none;
+    }
+    .global-light-beam {
+      animation: none;
+      display: none;
+    }
   }
 
   .global-light-beam {
@@ -186,8 +234,13 @@ html { color-scheme: dark; }
   @media (prefers-reduced-motion: reduce) {
     .global-horizontal-beam,
     .global-light-beam,
-    .hero-laser-beam { animation: none !important; display: none !important; }
-    *, *::before, *::after {
+    .hero-laser-beam {
+      animation: none !important;
+      display: none !important;
+    }
+    *,
+    *::before,
+    *::after {
       animation-duration: 0.001ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.001ms !important;
@@ -196,19 +249,38 @@ html { color-scheme: dark; }
   }
 }
 
-
 @keyframes global-beam {
-  0% { transform: translate3d(-50%, -20vh, 0); opacity: 0; }
-  15% { opacity: 1; }
-  85% { opacity: 1; }
-  100% { transform: translate3d(-50%, 110vh, 0); opacity: 0; }
+  0% {
+    transform: translate3d(-50%, -20vh, 0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(-50%, 110vh, 0);
+    opacity: 0;
+  }
 }
 
 @keyframes global-horizontal-beam {
-  0% { transform: translate3d(0, -5vh, 0); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translate3d(0, 105vh, 0); opacity: 0; }
+  0% {
+    transform: translate3d(0, -5vh, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, 105vh, 0);
+    opacity: 0;
+  }
 }
 
 @layer utilities {
@@ -221,8 +293,6 @@ html { color-scheme: dark; }
     }
   }
 }
-
-
 
 /* ---- Accessible focus states (keyboard only) ---- */
 @layer base {

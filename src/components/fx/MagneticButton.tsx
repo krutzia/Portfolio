@@ -59,10 +59,7 @@ export function MagneticButton({
     "group relative inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-colors select-none cursor-pointer";
 
   const inner = (
-    <motion.span
-      style={{ x: sx, y: sy }}
-      className={cn(base, variantClass[variant], className)}
-    >
+    <motion.span style={{ x: sx, y: sy }} className={cn(base, variantClass[variant], className)}>
       {icon}
       <span>{children}</span>
     </motion.span>

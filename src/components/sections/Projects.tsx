@@ -29,9 +29,11 @@ export function Projects({ featuredOnly = true }: { featuredOnly?: boolean }) {
   const { isMinimal, intensity } = useAnimationMode();
 
   const filtered = useMemo(
-    () => INDEXED
-      .filter(({ p }) => (!featuredOnly || FEATURED_PROJECTS.has(p.name)) && matches(filter, p.filterCategory))
-      .sort((a, b) => (a.p.name === "ResuMatch" ? -1 : b.p.name === "ResuMatch" ? 1 : a.i - b.i)),
+    () =>
+      INDEXED.filter(
+        ({ p }) =>
+          (!featuredOnly || FEATURED_PROJECTS.has(p.name)) && matches(filter, p.filterCategory),
+      ).sort((a, b) => (a.p.name === "ResuMatch" ? -1 : b.p.name === "ResuMatch" ? 1 : a.i - b.i)),
     [featuredOnly, filter],
   );
 
@@ -43,7 +45,9 @@ export function Projects({ featuredOnly = true }: { featuredOnly?: boolean }) {
       "AI/Backend": 0,
     };
     FILTERS.forEach((f) => {
-      c[f] = projects.filter((p) => (!featuredOnly || FEATURED_PROJECTS.has(p.name)) && matches(f, p.filterCategory)).length;
+      c[f] = projects.filter(
+        (p) => (!featuredOnly || FEATURED_PROJECTS.has(p.name)) && matches(f, p.filterCategory),
+      ).length;
     });
     return c;
   }, [featuredOnly]);
@@ -69,7 +73,10 @@ export function Projects({ featuredOnly = true }: { featuredOnly?: boolean }) {
                 to={featuredOnly ? "/projects" : "/"}
                 className="mt-4 inline-flex text-xs font-semibold uppercase tracking-[0.18em] text-brand-pink transition-opacity hover:opacity-75"
               >
-                {featuredOnly ? "View All Projects" : "Back to Home"} <span className="ml-2" aria-hidden>↗</span>
+                {featuredOnly ? "View All Projects" : "Back to Home"}{" "}
+                <span className="ml-2" aria-hidden>
+                  ↗
+                </span>
               </Link>
             </div>
           </div>
@@ -94,7 +101,9 @@ export function Projects({ featuredOnly = true }: { featuredOnly?: boolean }) {
                       onClick={() => setFilter(f)}
                       className={
                         "relative inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-medium transition-colors " +
-                        (isActive ? "text-background" : "text-muted-foreground hover:text-foreground")
+                        (isActive
+                          ? "text-background"
+                          : "text-muted-foreground hover:text-foreground")
                       }
                     >
                       {isActive && (

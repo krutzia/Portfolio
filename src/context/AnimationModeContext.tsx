@@ -52,8 +52,7 @@ export function AnimationModeProvider({ children }: { children: ReactNode }) {
   };
 
   const effectiveMode: AnimationMode = prefersReducedMotion ? "minimal" : mode;
-  const intensity =
-    effectiveMode === "minimal" ? 0 : effectiveMode === "balanced" ? 0.6 : 1;
+  const intensity = effectiveMode === "minimal" ? 0 : effectiveMode === "balanced" ? 0.6 : 1;
 
   return (
     <AnimationModeContext.Provider

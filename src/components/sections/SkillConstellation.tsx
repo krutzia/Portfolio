@@ -124,7 +124,10 @@ export function SkillConstellation() {
   const { isMinimal } = useAnimationMode();
 
   return (
-    <section id="skills" className="relative flex min-h-[100svh] items-center overflow-hidden border-t border-border px-6 py-28 md:py-36">
+    <section
+      id="skills"
+      className="relative flex min-h-[100svh] items-center overflow-hidden border-t border-border px-6 py-28 md:py-36"
+    >
       <div className="mx-auto w-full max-w-6xl">
         <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1.25fr)_minmax(280px,0.75fr)] md:gap-16">
           <div>
@@ -150,7 +153,13 @@ export function SkillConstellation() {
                 to="/skills"
                 className="group mt-7 inline-flex w-fit items-center text-xs font-semibold uppercase tracking-[0.18em] text-brand-pink transition-all duration-500 hover:translate-x-1 hover:opacity-75"
               >
-                View All Skills <span className="ml-2 transition-transform duration-500 group-hover:translate-x-1" aria-hidden>→</span>
+                View All Skills{" "}
+                <span
+                  className="ml-2 transition-transform duration-500 group-hover:translate-x-1"
+                  aria-hidden
+                >
+                  →
+                </span>
               </Link>
             </div>
           </Reveal>
@@ -162,7 +171,12 @@ export function SkillConstellation() {
           viewport={{ once: true, margin: "-100px" }}
           variants={{
             hidden: {},
-            visible: { transition: { staggerChildren: isMinimal ? 0 : 0.1, delayChildren: isMinimal ? 0 : 0.2 } },
+            visible: {
+              transition: {
+                staggerChildren: isMinimal ? 0 : 0.1,
+                delayChildren: isMinimal ? 0 : 0.2,
+              },
+            },
           }}
           className="mt-20 grid gap-3 sm:grid-cols-2 md:mt-28 lg:grid-cols-3"
         >
@@ -182,7 +196,12 @@ export function SkillConstellation() {
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 className="group relative min-h-48 overflow-hidden rounded-xl border border-border bg-card p-6 transition-colors duration-500 hover:border-brand-pink/50 hover:shadow-[0_18px_45px_-24px_oklch(0.72_0.31_350_/_0.5)] md:min-h-56 md:p-7"
               >
-                <SkillCardContent name={skill.name} category={skill.category} index={index} detail={FEATURED_DETAILS[skill.name]} />
+                <SkillCardContent
+                  name={skill.name}
+                  category={skill.category}
+                  index={index}
+                  detail={FEATURED_DETAILS[skill.name]}
+                />
               </motion.div>
             );
           })}
@@ -209,8 +228,8 @@ export function SkillCardContent({
   return (
     <>
       <div className="flex items-start justify-between gap-4">
-      <div className="grid h-14 w-14 place-items-center rounded-lg border border-border bg-background/60 transition-all duration-500 group-hover:scale-105 group-hover:border-brand-pink/40">
-        <Icon className="h-7 w-7" style={{ color: brand.color }} aria-hidden />
+        <div className="grid h-14 w-14 place-items-center rounded-lg border border-border bg-background/60 transition-all duration-500 group-hover:scale-105 group-hover:border-brand-pink/40">
+          <Icon className="h-7 w-7" style={{ color: brand.color }} aria-hidden />
         </div>
         <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
           0{index + 1} / {category}
@@ -219,9 +238,7 @@ export function SkillCardContent({
       <div className="absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-brand-pink transition-transform duration-500 group-hover:scale-x-100" />
       <div className="mt-12">
         <h3 className="text-xl font-semibold tracking-tight">{name}</h3>
-        <p className="mt-2 text-sm text-muted-foreground">
-          {detail ?? SKILL_DESCRIPTIONS[name]}
-        </p>
+        <p className="mt-2 text-sm text-muted-foreground">{detail ?? SKILL_DESCRIPTIONS[name]}</p>
       </div>
     </>
   );

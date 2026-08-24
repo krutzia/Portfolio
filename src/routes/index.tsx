@@ -66,7 +66,6 @@ function Home() {
 
       <ScrollProgress />
 
-
       <Navbar />
       <main>
         <Hero />

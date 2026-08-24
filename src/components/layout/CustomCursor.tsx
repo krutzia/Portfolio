@@ -21,9 +21,7 @@ export function CustomCursor() {
       y.set(e.clientY);
       const el = e.target as HTMLElement;
       setHovering(
-        !!el?.closest?.(
-          "a, button, [data-cursor-hover], input, textarea, [role='button']",
-        ),
+        !!el?.closest?.("a, button, [data-cursor-hover], input, textarea, [role='button']"),
       );
     };
     window.addEventListener("mousemove", move);

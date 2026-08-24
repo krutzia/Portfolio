@@ -40,9 +40,9 @@ export function About() {
             Building products, solving problems, and creating software people actually use.
           </h2>
           <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-muted-foreground">
-            Final-year Computer Science engineer at {profile.education.school.split(",")[0]}.
-            I focus on shipping production-grade software — not demos — and care equally about
-            clean code, fast iteration, and the people on the other side of the screen.
+            Final-year Computer Science engineer at {profile.education.school.split(",")[0]}. I
+            focus on shipping production-grade software — not demos — and care equally about clean
+            code, fast iteration, and the people on the other side of the screen.
           </p>
         </Reveal>
 

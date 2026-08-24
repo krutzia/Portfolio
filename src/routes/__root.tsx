@@ -37,7 +37,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-  
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -76,7 +75,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Kashish — Full Stack Developer Portfolio" },
-      { name: "description", content: "Portfolio of Kashish, a full stack developer building production web products with React, Node, and TypeScript." },
+      {
+        name: "description",
+        content:
+          "Portfolio of Kashish, a full stack developer building production web products with React, Node, and TypeScript.",
+      },
       { name: "author", content: "Kashish" },
       { property: "og:site_name", content: "Kashish — Portfolio" },
       { property: "og:type", content: "website" },

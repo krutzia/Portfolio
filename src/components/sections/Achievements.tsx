@@ -17,8 +17,7 @@ export function Achievements() {
             Consistency, measured.
           </h2>
           <p className="mt-4 max-w-xl text-[15px] text-muted-foreground">
-            Reps, certifications, and shipped products — receipts for the work behind the
-            résumé.
+            Reps, certifications, and shipped products — receipts for the work behind the résumé.
           </p>
         </Reveal>
 
@@ -27,7 +26,13 @@ export function Achievements() {
             const Icon = ICONS[i] ?? Award;
             return (
               <Reveal key={a.label} delay={i * 0.06}>
-                <Counter target={a.value} suffix={a.suffix} label={a.label} sub={a.sub} Icon={Icon} />
+                <Counter
+                  target={a.value}
+                  suffix={a.suffix}
+                  label={a.label}
+                  sub={a.sub}
+                  Icon={Icon}
+                />
               </Reveal>
             );
           })}
@@ -74,10 +79,9 @@ function Counter({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => entry.isIntersecting && setStart(true),
-      { threshold: 0.4 },
-    );
+    const io = new IntersectionObserver(([entry]) => entry.isIntersecting && setStart(true), {
+      threshold: 0.4,
+    });
     io.observe(el);
     return () => io.disconnect();
   }, []);

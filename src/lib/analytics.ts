@@ -6,10 +6,7 @@
  * localStorage so counts are inspectable even without a provider.
  */
 
-export type TrackEventName =
-  | "linkedin_click"
-  | "github_click"
-  | "resume_download";
+export type TrackEventName = "linkedin_click" | "github_click" | "resume_download";
 
 const STORAGE_KEY = "portfolio_engagement_events";
 

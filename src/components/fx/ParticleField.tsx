@@ -25,7 +25,7 @@ export function ParticleField({ className }: { className?: string }) {
 
     let raf = 0;
     let particles: Particle[] = [];
-    let dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
     const resize = () => {
       const { innerWidth: w, innerHeight: h } = window;
@@ -113,9 +113,7 @@ export function ParticleField({ className }: { className?: string }) {
   return (
     <canvas
       ref={canvasRef}
-      className={
-        "pointer-events-none fixed inset-0 -z-10 opacity-80 " + (className ?? "")
-      }
+      className={"pointer-events-none fixed inset-0 -z-10 opacity-80 " + (className ?? "")}
       aria-hidden
     />
   );

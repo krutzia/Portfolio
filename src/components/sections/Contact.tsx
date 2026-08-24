@@ -6,7 +6,6 @@ import { SectionLabel } from "@/components/sections/About";
 import { profile, socials } from "@/config/portfolio";
 import { trackEvent, type TrackEventName } from "@/lib/analytics";
 
-
 export function Contact() {
   const [sent, setSent] = useState(false);
 
@@ -25,7 +24,10 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="relative overflow-hidden border-t border-border px-6 pb-16 pt-24">
+    <section
+      id="contact"
+      className="relative overflow-hidden border-t border-border px-6 pb-16 pt-24"
+    >
       <div className="mx-auto max-w-7xl">
         <Reveal>
           <div className="flex items-center gap-3 font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-muted-foreground">
@@ -43,7 +45,6 @@ export function Contact() {
             status: open to software engineering opportunities
           </div>
 
-
           <h2 className="mt-10 font-extrabold uppercase leading-[0.88] tracking-[-0.045em] text-foreground text-[clamp(3.2rem,12vw,10.5rem)]">
             <span className="block">Let's build</span>
             <span className="block">something</span>
@@ -57,7 +58,6 @@ export function Contact() {
             </span>
           </h2>
         </Reveal>
-
 
         <div className="mt-12 grid gap-4 lg:grid-cols-[1fr_1.2fr]">
           <Reveal>
@@ -89,7 +89,11 @@ export function Contact() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <form onSubmit={handleSubmit} aria-label="Contact form" className="panel rounded-lg p-6">
+            <form
+              onSubmit={handleSubmit}
+              aria-label="Contact form"
+              className="panel rounded-lg p-6"
+            >
               <div className="grid gap-4">
                 <Field name="name" label="Your name" placeholder="Jane Recruiter" />
                 <Field name="email" type="email" label="Email" placeholder="jane@company.com" />
@@ -168,7 +172,6 @@ function InfoRow({
     inner
   );
 }
-
 
 function Field({
   name,

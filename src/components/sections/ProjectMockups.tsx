@@ -9,7 +9,9 @@ export function ResuMatchMockup() {
       {/* Sidebar */}
       <div className="hidden w-[34%] flex-col gap-3 border-r border-border bg-[oklch(0.12_0.005_260)] p-3 sm:flex">
         <div className="flex items-center gap-1.5">
-          <div className="grid h-5 w-5 place-items-center rounded bg-violet-500/20 text-[10px] font-bold text-violet-300">R</div>
+          <div className="grid h-5 w-5 place-items-center rounded bg-violet-500/20 text-[10px] font-bold text-violet-300">
+            R
+          </div>
           <span className="text-[11px] font-semibold">ResuMatch</span>
         </div>
         <div className="mt-1 space-y-1">
@@ -37,7 +39,9 @@ export function ResuMatchMockup() {
         <div className="flex items-center justify-between">
           <div>
             <div className="text-[11px] font-semibold">ATS Dashboard</div>
-            <div className="text-[9px] text-muted-foreground">Senior Frontend Engineer · Vercel</div>
+            <div className="text-[9px] text-muted-foreground">
+              Senior Frontend Engineer · Vercel
+            </div>
           </div>
           <div className="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[9px] font-medium text-emerald-300">
             Match 87%
@@ -59,7 +63,10 @@ export function ResuMatchMockup() {
                   <span className="tabular-nums text-foreground/80">{v}%</span>
                 </div>
                 <div className="h-1 overflow-hidden rounded-full bg-background/60">
-                  <div className="h-full rounded-full bg-violet-400/80" style={{ width: `${v}%` }} />
+                  <div
+                    className="h-full rounded-full bg-violet-400/80"
+                    style={{ width: `${v}%` }}
+                  />
                 </div>
               </div>
             ))}
@@ -74,7 +81,10 @@ export function ResuMatchMockup() {
           </div>
           <div className="flex flex-wrap gap-1">
             {["GraphQL", "Playwright", "Edge Functions"].map((t) => (
-              <span key={t} className="rounded border border-border bg-background/40 px-1.5 py-0.5 text-[8.5px] text-muted-foreground">
+              <span
+                key={t}
+                className="rounded border border-border bg-background/40 px-1.5 py-0.5 text-[8.5px] text-muted-foreground"
+              >
                 + {t}
               </span>
             ))}
@@ -87,7 +97,10 @@ export function ResuMatchMockup() {
             ["Stripe", "Frontend Engineer", 91],
             ["Linear", "Full Stack Engineer", 84],
           ].map(([co, role, m]) => (
-            <div key={co as string} className="flex items-center justify-between rounded border border-border bg-[oklch(0.16_0.005_260)] px-2 py-1.5">
+            <div
+              key={co as string}
+              className="flex items-center justify-between rounded border border-border bg-[oklch(0.16_0.005_260)] px-2 py-1.5"
+            >
               <div>
                 <div className="text-[9.5px] font-medium">{role}</div>
                 <div className="text-[8.5px] text-muted-foreground">{co}</div>
@@ -108,7 +121,9 @@ export function FitTrackMockup() {
       <div className="flex w-full flex-col gap-2.5">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1.5">
-            <div className="grid h-5 w-5 place-items-center rounded bg-cyan-500/20 text-[10px] font-bold text-cyan-300">F</div>
+            <div className="grid h-5 w-5 place-items-center rounded bg-cyan-500/20 text-[10px] font-bold text-cyan-300">
+              F
+            </div>
             <span className="text-[11px] font-semibold">FitTrack</span>
           </div>
           <div className="flex items-center gap-1 text-[8.5px] text-muted-foreground">
@@ -144,15 +159,10 @@ export function FitTrackMockup() {
             {bars.map((h, i) => (
               <div key={i} className="flex flex-1 flex-col items-center gap-1">
                 <div
-                  className={
-                    "w-full rounded-sm " +
-                    (i === 5 ? "bg-cyan-400/90" : "bg-cyan-400/30")
-                  }
+                  className={"w-full rounded-sm " + (i === 5 ? "bg-cyan-400/90" : "bg-cyan-400/30")}
                   style={{ height: `${h}%` }}
                 />
-                <div className="text-[7.5px] text-muted-foreground">
-                  {"MTWTFSS"[i]}
-                </div>
+                <div className="text-[7.5px] text-muted-foreground">{"MTWTFSS"[i]}</div>
               </div>
             ))}
           </div>
@@ -164,7 +174,10 @@ export function FitTrackMockup() {
             ["Upper body strength", "5 × 8 · 42 min"],
             ["HIIT — sprint intervals", "8 rounds · 22 min"],
           ].map(([t, s]) => (
-            <div key={t} className="flex items-center justify-between rounded border border-border bg-[oklch(0.16_0.005_260)] px-2 py-1.5">
+            <div
+              key={t}
+              className="flex items-center justify-between rounded border border-border bg-[oklch(0.16_0.005_260)] px-2 py-1.5"
+            >
               <div>
                 <div className="text-[9.5px] font-medium">{t}</div>
                 <div className="text-[8.5px] text-muted-foreground">{s}</div>
@@ -185,10 +198,14 @@ export function SiloMockup() {
     <div className="flex h-full bg-[oklch(0.14_0.005_260)] text-[10px] text-foreground/90">
       <div className="hidden w-[30%] flex-col gap-2 border-r border-border bg-[oklch(0.12_0.005_260)] p-3 sm:flex">
         <div className="flex items-center gap-1.5">
-          <div className="grid h-5 w-5 place-items-center rounded bg-pink-500/20 text-[10px] font-bold text-pink-300">S</div>
+          <div className="grid h-5 w-5 place-items-center rounded bg-pink-500/20 text-[10px] font-bold text-pink-300">
+            S
+          </div>
           <span className="text-[11px] font-semibold">Silo</span>
         </div>
-        <div className="mt-1 text-[8.5px] uppercase tracking-wider text-muted-foreground">Today</div>
+        <div className="mt-1 text-[8.5px] uppercase tracking-wider text-muted-foreground">
+          Today
+        </div>
         {[
           ["DSA — Graphs", "1h 30m"],
           ["System Design", "45m"],
@@ -215,7 +232,9 @@ export function SiloMockup() {
         {/* AI assistant card */}
         <div className="rounded-md border border-border bg-[oklch(0.16_0.005_260)] p-2.5">
           <div className="mb-1.5 flex items-center gap-1.5">
-            <span className="grid h-4 w-4 place-items-center rounded-full bg-pink-500/20 text-[9px] font-bold text-pink-300">AI</span>
+            <span className="grid h-4 w-4 place-items-center rounded-full bg-pink-500/20 text-[9px] font-bold text-pink-300">
+              AI
+            </span>
             <span className="text-[9.5px] font-medium">Study assistant</span>
           </div>
           <div className="rounded bg-background/40 p-1.5 text-[8.5px] leading-snug text-muted-foreground">
@@ -233,7 +252,10 @@ export function SiloMockup() {
               ["Mock interviews", 3, 5],
               ["Notes reviewed", 42, 50],
             ].map(([l, a, b]) => (
-              <div key={l as string} className="flex justify-between text-[8.5px] text-muted-foreground">
+              <div
+                key={l as string}
+                className="flex justify-between text-[8.5px] text-muted-foreground"
+              >
                 <span>{l}</span>
                 <span className="tabular-nums text-foreground/80">
                   {a}/{b}
@@ -341,10 +363,7 @@ export function GenericMockup({
 
       <div className="relative mt-3 grid flex-1 grid-cols-3 gap-2">
         {[0, 1, 2].map((i) => (
-          <div
-            key={i}
-            className="rounded-md border border-border bg-background/40 p-2"
-          >
+          <div key={i} className="rounded-md border border-border bg-background/40 p-2">
             <div className="h-1 w-6 rounded-full bg-foreground/50" />
             <div
               className="mt-2 h-6 rounded-sm"

@@ -44,10 +44,7 @@ export function CursorGlow() {
   if (isMinimal) return null;
 
   return (
-    <div
-      aria-hidden
-      className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden"
-    >
+    <div aria-hidden className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden">
       <div
         ref={ref}
         className="absolute left-0 top-0 h-[600px] w-[600px] rounded-full will-change-transform"

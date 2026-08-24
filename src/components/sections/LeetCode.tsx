@@ -36,9 +36,7 @@ export function LeetCode() {
               <div className="mb-5 flex items-center justify-between">
                 <div>
                   <div className="text-xs text-muted-foreground">Activity heatmap</div>
-                  <div className="mt-1 text-base font-semibold">
-                    Daily problem-solving rhythm
-                  </div>
+                  <div className="mt-1 text-base font-semibold">Daily problem-solving rhythm</div>
                 </div>
                 <a
                   href={socials.leetcode}

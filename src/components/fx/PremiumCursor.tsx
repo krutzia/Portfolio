@@ -12,9 +12,7 @@ export function PremiumCursor() {
   const mouse = useRef({ x: -160, y: -160 });
   const pos = useRef({ x: -160, y: -160 });
   const ringPos = useRef({ x: -160, y: -160 });
-  const trail = useRef(
-    Array.from({ length: 5 }, () => ({ x: -160, y: -160, scale: 1 })),
-  );
+  const trail = useRef(Array.from({ length: 5 }, () => ({ x: -160, y: -160, scale: 1 })));
   const scale = useRef({ current: 1, target: 1, down: 1 });
   const magneticEl = useRef<HTMLElement | null>(null);
   const raf = useRef<number | null>(null);
