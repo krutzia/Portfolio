@@ -18,8 +18,11 @@ const AnimationModeContext = createContext<Ctx | null>(null);
 const STORAGE_KEY = "portfolio:animation-mode";
 
 export function AnimationModeProvider({ children }: { children: ReactNode }) {
-  const [mode, setModeState] = useState<AnimationMode>("cinematic");
+  // Start in the least expensive mode to keep the portfolio responsive on slower machines.
+  // Users can still opt back into cinematic motion if they explicitly choose it.
+  const [mode, setModeState] = useState<AnimationMode>("minimal");
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [isInteractionBusy, setIsInteractionBusy] = useState(false);
 
   useEffect(() => {
     try {
@@ -42,6 +45,44 @@ export function AnimationModeProvider({ children }: { children: ReactNode }) {
     return () => mq.removeEventListener("change", apply);
   }, []);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const handleFocusIn = (event: FocusEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (!target) return;
+      const isInteractive = target.matches(
+        "input, textarea, select, button, a, summary, [role='button'], [tabindex]",
+      );
+      if (isInteractive) setIsInteractionBusy(true);
+    };
+
+    const handleFocusOut = (event: FocusEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (!target) return;
+      const next = document.activeElement as HTMLElement | null;
+      const stillActive = next && next !== target && next.matches(
+        "input, textarea, select, button, a, summary, [role='button'], [tabindex]",
+      );
+      if (!stillActive) setIsInteractionBusy(false);
+    };
+
+    document.addEventListener("focusin", handleFocusIn);
+    document.addEventListener("focusout", handleFocusOut);
+
+    return () => {
+      document.removeEventListener("focusin", handleFocusIn);
+      document.removeEventListener("focusout", handleFocusOut);
+    };
+  }, []);
+
+  useEffect(() => {
+    const body = document.body;
+    if (!body) return;
+    body.classList.toggle("motion-reduction-active", isInteractionBusy);
+    return () => body.classList.remove("motion-reduction-active");
+  }, [isInteractionBusy]);
+
   const setMode = (m: AnimationMode) => {
     setModeState(m);
     try {
@@ -51,7 +92,7 @@ export function AnimationModeProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const effectiveMode: AnimationMode = prefersReducedMotion ? "minimal" : mode;
+  const effectiveMode: AnimationMode = prefersReducedMotion || isInteractionBusy ? "minimal" : mode;
   const intensity = effectiveMode === "minimal" ? 0 : effectiveMode === "balanced" ? 0.6 : 1;
 
   return (

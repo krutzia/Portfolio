@@ -1,4 +1,8 @@
+import { useAnimationMode } from "@/context/AnimationModeContext";
+
 export function GlobalBackground() {
+  const { isMinimal } = useAnimationMode();
+
   return (
     <div
       aria-hidden
@@ -41,8 +45,9 @@ export function GlobalBackground() {
           background: "radial-gradient(65% 55% at 50% 35%, rgba(255,84,156,0.10), transparent 70%)",
         }}
       />
-      {/* Horizontal pink beam sweeping top → bottom */}
-      <div className="global-horizontal-beam absolute left-0 right-0 top-0 h-[3px] will-change-transform motion-reduce:hidden" />
+      {!isMinimal && (
+        <div className="global-horizontal-beam absolute left-0 right-0 top-0 h-[3px] will-change-transform motion-reduce:hidden" />
+      )}
     </div>
   );
 }

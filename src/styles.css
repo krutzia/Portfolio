@@ -247,6 +247,23 @@ html {
       scroll-behavior: auto !important;
     }
   }
+
+  body.motion-reduction-active .global-horizontal-beam,
+  body.motion-reduction-active .global-light-beam,
+  body.motion-reduction-active .hero-laser-beam {
+    animation: none !important;
+    display: none !important;
+  }
+
+  body.motion-reduction-active,
+  body.motion-reduction-active *,
+  body.motion-reduction-active *::before,
+  body.motion-reduction-active *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 @keyframes global-beam {

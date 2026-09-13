@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
-import { Send, Github, Linkedin, Mail, MapPin, Check } from "lucide-react";
+import { Send, Github, Linkedin, Mail, MapPin, Check, AlertCircle } from "lucide-react";
 import { Reveal } from "@/components/fx/Reveal";
 import { SectionLabel } from "@/components/sections/About";
 import { profile, socials } from "@/config/portfolio";
@@ -8,19 +8,51 @@ import { trackEvent, type TrackEventName } from "@/lib/analytics";
 
 export function Contact() {
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
-    const name = String(data.get("name") || "");
-    const email = String(data.get("email") || "");
-    const message = String(data.get("message") || "");
-    const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
-    const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
-    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
+    const payload = {
+      name: String(data.get("name") || "").trim(),
+      email: String(data.get("email") || "").trim(),
+      message: String(data.get("message") || "").trim(),
+    };
+
+    if (!payload.name || !payload.email || !payload.message) {
+      setError("Please fill in all fields before sending your message.");
+      setSent(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = (await response.json()) as { success?: boolean; message?: string };
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Something went wrong while sending your message.");
+      }
+
+      form.reset();
+      setSent(true);
+      setError(null);
+      window.setTimeout(() => setSent(false), 4000);
+    } catch (submissionError) {
+      const message =
+        submissionError instanceof Error
+          ? submissionError.message
+          : "Something went wrong while sending your message.";
+      setSent(false);
+      setError(message);
+    }
   };
 
   return (
@@ -110,7 +142,7 @@ export function Contact() {
                 >
                   {sent ? (
                     <>
-                      <Check className="h-4 w-4" /> Opening mail app…
+                      <Check className="h-4 w-4" /> Message sent
                     </>
                   ) : (
                     <>
@@ -118,9 +150,20 @@ export function Contact() {
                     </>
                   )}
                 </motion.button>
-                <p aria-live="polite" className="sr-only">
-                  {sent ? "Opening your mail app with the message." : ""}
-                </p>
+                {error ? (
+                  <p
+                    aria-live="polite"
+                    className="inline-flex items-center gap-2 text-sm text-red-400"
+                  >
+                    <AlertCircle className="h-4 w-4" />
+                    {error}
+                  </p>
+                ) : null}
+                {sent ? (
+                  <p aria-live="polite" className="text-sm text-emerald-400">
+                    Thanks! Your message has been delivered successfully.
+                  </p>
+                ) : null}
               </div>
             </form>
           </Reveal>
