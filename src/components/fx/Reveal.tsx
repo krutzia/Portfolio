@@ -28,10 +28,11 @@ export function Reveal({ children, delay = 0, y = 24, className, once = true }: 
 
   return (
     <motion.div
+      layout={false}
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once, margin: "-80px" }}
+      viewport={{ once, margin: once ? "0px" : "-80px" }}
       variants={variants}
     >
       {children}
