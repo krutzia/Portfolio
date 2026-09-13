@@ -110,60 +110,57 @@ export function Contact() {
            * form's layout or transform — preventing re-trigger on input focus.
            */}
           <Reveal delay={0.08}>
-            <div>
-              <form
-                onSubmit={handleSubmit}
-                aria-label="Contact form"
-                className="panel rounded-lg p-6"
-              >
-                <div className="grid gap-4">
-                  <Field name="name" label="Your name" placeholder="Jane Recruiter" />
-                  <Field name="email" type="email" label="Email" placeholder="jane@company.com" />
-                  <Field
-                    name="message"
-                    label="Message"
-                    placeholder="Tell me about the role or project…"
-                    textarea
-                  />
+            <form
+              onSubmit={handleSubmit}
+              aria-label="Contact form"
+              className="panel rounded-lg p-6"
+            >
+              <div className="grid gap-4">
+                <Field name="name" label="Your name" placeholder="Jane Recruiter" />
+                <Field name="email" type="email" label="Email" placeholder="jane@company.com" />
+                <Field
+                  name="message"
+                  label="Message"
+                  placeholder="Tell me about the role or project…"
+                  textarea
+                />
 
-                  {/* Error banner */}
-                  {submitState === "error" && errorMsg && (
-                    <div className="flex items-start gap-2 rounded-md border border-destructive/40 bg-destructive/10 px-3 py-2.5 text-xs text-destructive">
-                      <AlertCircle className="mt-0.5 h-3.5 w-3.5 flex-shrink-0" />
-                      <span>{errorMsg}</span>
-                    </div>
+                {/* Error banner */}
+                {submitState === "error" && errorMsg && (
+                  <div className="flex items-start gap-2 rounded-md border border-destructive/40 bg-destructive/10 px-3 py-2.5 text-xs text-destructive">
+                    <AlertCircle className="mt-0.5 h-3.5 w-3.5 flex-shrink-0" />
+                    <span>{errorMsg}</span>
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={submitState === "sending" || submitState === "sent"}
+                  className="inline-flex items-center justify-center gap-2 rounded-md bg-foreground px-4 py-2.5 text-sm font-medium text-background transition-all hover:opacity-90 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {submitState === "sending" && (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" /> Sending…
+                    </>
                   )}
+                  {submitState === "sent" && (
+                    <>
+                      <Check className="h-4 w-4" /> Message sent!
+                    </>
+                  )}
+                  {(submitState === "idle" || submitState === "error") && (
+                    <>
+                      <Send className="h-4 w-4" /> Send Message
+                    </>
+                  )}
+                </button>
 
-                  <motion.button
-                    type="submit"
-                    disabled={submitState === "sending" || submitState === "sent"}
-                    whileTap={submitState === "idle" || submitState === "error" ? { scale: 0.98 } : undefined}
-                    className="inline-flex items-center justify-center gap-2 rounded-md bg-foreground px-4 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
-                  >
-                    {submitState === "sending" && (
-                      <>
-                        <Loader2 className="h-4 w-4 animate-spin" /> Sending…
-                      </>
-                    )}
-                    {submitState === "sent" && (
-                      <>
-                        <Check className="h-4 w-4" /> Message sent!
-                      </>
-                    )}
-                    {(submitState === "idle" || submitState === "error") && (
-                      <>
-                        <Send className="h-4 w-4" /> Send Message
-                      </>
-                    )}
-                  </motion.button>
-
-                  <p aria-live="polite" className="sr-only">
-                    {submitState === "sent" ? "Your message has been sent successfully." : ""}
-                    {submitState === "error" ? `Error: ${errorMsg}` : ""}
-                  </p>
-                </div>
-              </form>
-            </div>
+                <p aria-live="polite" className="sr-only">
+                  {submitState === "sent" ? "Your message has been sent successfully." : ""}
+                  {submitState === "error" ? `Error: ${errorMsg}` : ""}
+                </p>
+              </div>
+            </form>
           </Reveal>
         </div>
 
