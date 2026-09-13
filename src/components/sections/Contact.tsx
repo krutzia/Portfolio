@@ -66,7 +66,7 @@ export function Contact() {
             <span
               className="block text-transparent"
               style={{
-                WebkitTextStroke: "1.5px oklch(1 0 0 / 22%)",
+                WebkitTextStroke: "1.5px rgba(255, 255, 255, 0.22)",
               }}
             >
               unreasonable
@@ -225,7 +225,7 @@ function Field({
   textarea?: boolean;
 }) {
   const base =
-    "w-full rounded-md border border-border bg-background/60 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none transition-colors focus:border-[oklch(1_0_0_/_20%)] focus:bg-background";
+    "w-full rounded-md border border-border bg-background/60 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none transition-colors focus:border-foreground/30 focus:bg-background";
   const id = `contact-${name}`;
   return (
     <div className="block">
